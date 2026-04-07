@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="300" height="300">
+  <!-- White background circle -->
+  <circle cx="150" cy="150" r="148" fill="white" stroke="#222" stroke-width="2"/>
+
+  <!-- Yellow body circle -->
+  <circle cx="120" cy="165" r="58" fill="#FFE600"/>
+  <!-- Blue body circle -->
+  <circle cx="175" cy="172" r="50" fill="#4BBFEE"/>
+
+  <!-- Left figure arms/body -->
+  <path d="M88,230 C88,230 100,190 115,165 C120,155 125,140 118,120 C114,108 112,100 120,88"
+        fill="none" stroke="#111" stroke-width="7" stroke-linecap="round"/>
+  <path d="M152,230 C152,230 140,190 128,165 C123,155 120,140 128,118 C132,106 134,98 128,85"
+        fill="none" stroke="#111" stroke-width="7" stroke-linecap="round"/>
+  <!-- Left figure cross bar -->
+  <path d="M90,160 C100,150 140,150 152,160" fill="none" stroke="#111" stroke-width="7" stroke-linecap="round"/>
+
+  <!-- Right figure arms/body -->
+  <path d="M157,228 C157,228 167,190 178,168 C182,158 186,143 180,122 C177,110 175,102 182,90"
+        fill="none" stroke="#111" stroke-width="7" stroke-linecap="round"/>
+  <path d="M210,225 C210,225 200,188 192,166 C188,156 185,141 192,120 C196,108 198,100 192,88"
+        fill="none" stroke="#111" stroke-width="7" stroke-linecap="round"/>
+  <!-- Right figure cross bar -->
+  <path d="M158,162 C168,152 202,152 212,162" fill="none" stroke="#111" stroke-width="7" stroke-linecap="round"/>
+
+  <!-- Left smiley face -->
+  <circle cx="120" cy="80" r="24" fill="#FFD700" stroke="#111" stroke-width="2"/>
+  <circle cx="113" cy="74" r="3" fill="#333"/>
+  <circle cx="127" cy="74" r="3" fill="#333"/>
+  <path d="M112,86 Q120,94 128,86" fill="none" stroke="#333" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- Right smiley face -->
+  <circle cx="188" cy="83" r="20" fill="#FFD700" stroke="#111" stroke-width="2"/>
+  <circle cx="182" cy="77" r="2.5" fill="#333"/>
+  <circle cx="194" cy="77" r="2.5" fill="#333"/>
+  <path d="M181,88 Q188,96 195,88" fill="none" stroke="#333" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- Circular text: ASSOCIATION MARIANNE AND FRIENDS (top arc) -->
+  <path id="topArc" d="M 30,150 A 120,120 0 0,1 270,150" fill="none"/>
+  <text font-family="Arial Black, Arial, sans-serif" font-size="16" font-weight="900" fill="#111" letter-spacing="1">
+    <textPath href="#topArc" startOffset="4%">ASSOCIATION MARIANNE AND FRIENDS</textPath>
+  </text>
+
+  <!-- Circular text: LE SOURIRE TOUJOURS (bottom arc) -->
+  <path id="bottomArc" d="M 42,175 A 120,120 0 0,0 258,175" fill="none"/>
+  <text font-family="Arial Black, Arial, sans-serif" font-size="16" font-weight="900" fill="#111" letter-spacing="2">
+    <textPath href="#bottomArc" startOffset="12%">LE SOURIRE TOUJOURS</textPath>
+  </text>
+</svg>
