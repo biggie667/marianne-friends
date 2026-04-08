@@ -17,7 +17,7 @@
     @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
     @keyframes shimmer { 0% { background-position: -200% center; } 100% { background-position: 200% center; } }
     @keyframes gradientFlow { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
-    @keyframes heroEntry { 0% { opacity: 0; transform: translateY(40px) scale(0.95); } 100% { opacity: 1; transform: translateY(0) scale(1); } }
+    @keyframes heroEntry { 0% { transform: translateY(20px) scale(0.98); } 100% { transform: translateY(0) scale(1); } }
     @keyframes borderGlow { 0%, 100% { box-shadow: 0 0 15px rgba(232,168,56,0.2); } 50% { box-shadow: 0 0 35px rgba(232,168,56,0.45); } }
 
     .reveal, .reveal-scale { opacity: 1; transform: none; }
@@ -61,7 +61,7 @@
       width: 120px; height: 120px; border-radius: 50%; background: #fff; overflow: hidden;
       display: inline-flex; align-items: center; justify-content: center;
       box-shadow: 0 0 70px rgba(232,168,56,0.45), 0 0 0 4px rgba(232,168,56,0.25);
-      animation: heroEntry 1s cubic-bezier(0.16,1,0.3,1) forwards, pulse 4s ease-in-out 2s infinite;
+      animation: pulse 4s ease-in-out 2s infinite;
       margin-bottom: 28px;
     }
     .hero-logo-wrap img { width: 100%; height: 100%; object-fit: cover; }
