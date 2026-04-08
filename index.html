@@ -1,0 +1,1903 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Association Marianne & Friends — 5 ans de solidarité</title>
+  <meta name="description" content="Association Caritative à but non lucratif engagée au service des plus vulnérables au Sénégal.">
+  <meta property="og:title" content="Association Marianne & Friends — 5 ans de solidarité">
+  <meta property="og:description" content="Donner · Partager · Transformer des vies">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 100px; }
+    body { font-family: 'Outfit', sans-serif; background: #FAFAF8; color: #1a1a2e; overflow-x: hidden; padding-top: 80px; }
+
+    /* ─── ANIMATIONS ─── */
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      33% { transform: translateY(-25px) rotate(5deg); }
+      66% { transform: translateY(12px) rotate(-3deg); }
+    }
+    @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.06); } }
+    @keyframes shimmer { 0% { background-position: -200% center; } 100% { background-position: 200% center; } }
+    @keyframes gradientFlow { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+    @keyframes heroEntry {
+      0% { opacity: 0; transform: translateY(40px) scale(0.95); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    @keyframes slideUp {
+      0% { opacity: 0; transform: translateY(50px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes slideLeft {
+      0% { opacity: 0; transform: translateX(50px); }
+      100% { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes slideRight {
+      0% { opacity: 0; transform: translateX(-50px); }
+      100% { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes scaleIn {
+      0% { opacity: 0; transform: scale(0.8); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+    @keyframes borderGlow {
+      0%, 100% { box-shadow: 0 0 15px rgba(232,168,56,0.2); }
+      50% { box-shadow: 0 0 35px rgba(232,168,56,0.45); }
+    }
+    @keyframes scrollBounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(8px); }
+    }
+    @keyframes cardSlideIn {
+      0% { opacity: 0; transform: translateX(-30px); }
+      100% { opacity: 1; transform: translateX(0); }
+    }
+
+    .reveal, .reveal-left, .reveal-right, .reveal-scale { opacity: 1; transform: none; }
+
+    /* ─── NAVIGATION ─── */
+    .navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      padding: 14px 28px;
+      background: rgba(26,26,46,0.85); backdrop-filter: blur(24px);
+      border-bottom: 1px solid rgba(232,168,56,0.15);
+      transition: all 0.4s ease;
+    }
+    .navbar.scrolled { background: rgba(26,26,46,0.95); padding: 10px 28px; }
+    .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+    .nav-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .nav-logo {
+      width: 46px; height: 46px; border-radius: 50%;
+      overflow: hidden; background: #fff;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 2px 10px rgba(232,168,56,0.3);
+    }
+    .nav-logo img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+    .nav-brand span { color: #fff; font-weight: 700; font-size: 16px; }
+    .nav-links { display: flex; gap: 32px; align-items: center; }
+    .nav-links a {
+      color: rgba(255,255,255,0.75); text-decoration: none; font-size: 14px;
+      font-weight: 500; position: relative; padding: 4px 0; transition: color 0.3s;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 2px;
+      background: #E8A838; transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .nav-links a:hover { color: #E8A838; }
+    .nav-links a:hover::after { width: 100%; }
+
+    .hamburger {
+      display: none; cursor: pointer; background: none; border: none; padding: 8px;
+      flex-direction: column; gap: 5px;
+    }
+    .hamburger span { display: block; width: 24px; height: 2px; background: #fff; transition: all 0.3s; border-radius: 2px; }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none; position: absolute; top: 100%; left: 0; right: 0;
+      background: rgba(26,26,46,0.98); backdrop-filter: blur(24px);
+      padding: 24px; flex-direction: column; gap: 20px;
+      border-bottom: 1px solid rgba(232,168,56,0.15);
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 16px; font-weight: 500; padding: 8px 0; }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 100vh; position: relative; overflow: hidden;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 35%, #0f3460 65%, #1a1a2e 100%);
+      background-size: 300% 300%; animation: gradientFlow 14s ease infinite;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .particle {
+      position: absolute; border-radius: 50%; background: rgba(255,255,255,0.1);
+      pointer-events: none;
+    }
+    .hero-content { position: relative; z-index: 2; text-align: center; padding: 0 24px; max-width: 900px; }
+    .hero-emblem {
+      width: 130px; height: 130px; border-radius: 50%;
+      background: #fff;
+      display: inline-flex; align-items: center; justify-content: center;
+      overflow: hidden;
+      box-shadow: 0 0 80px rgba(232,168,56,0.4), 0 0 0 4px rgba(232,168,56,0.3);
+      animation: heroEntry 1s cubic-bezier(0.16,1,0.3,1) forwards, pulse 4s ease-in-out 2s infinite;
+      margin-bottom: 28px;
+    }
+    .hero-emblem img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+    .hero h1 {
+      font-family: 'Playfair Display', serif; font-size: clamp(44px, 8vw, 84px);
+      font-weight: 900; line-height: 1.1;
+      background: linear-gradient(135deg, #E8A838, #F5D27E, #E8A838);
+      background-size: 200% auto; animation: heroEntry 1s cubic-bezier(0.16,1,0.3,1) 0.15s both, shimmer 3.5s linear infinite;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-sub {
+      color: rgba(255,255,255,0.65); font-size: clamp(16px, 2.8vw, 24px);
+      letter-spacing: 4px; text-transform: uppercase; font-weight: 300;
+      animation: heroEntry 1s cubic-bezier(0.16,1,0.3,1) 0.35s both; margin-top: 36px;
+    }
+    .hero-badge {
+      display: inline-block; padding: 12px 32px; border: 1px solid rgba(232,168,56,0.4);
+      border-radius: 50px; color: #E8A838; font-size: 15px; letter-spacing: 2px; font-weight: 500;
+      backdrop-filter: blur(10px); background: rgba(232,168,56,0.07);
+      animation: heroEntry 1s cubic-bezier(0.16,1,0.3,1) 0.55s both, borderGlow 3s ease-in-out infinite;
+      margin-top: 28px;
+    }
+    .hero-buttons {
+      display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 44px;
+      animation: heroEntry 1s cubic-bezier(0.16,1,0.3,1) 0.75s both;
+    }
+    .btn {
+      display: inline-block; padding: 16px 40px; border-radius: 50px;
+      font-weight: 700; font-size: 16px; text-decoration: none; cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.16,1,0.3,1); border: none;
+      font-family: 'Outfit', sans-serif; letter-spacing: 0.5px;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #E8A838, #F5D27E); color: #1a1a2e;
+      box-shadow: 0 4px 24px rgba(232,168,56,0.35);
+    }
+    .btn-primary:hover { transform: translateY(-4px) scale(1.03); box-shadow: 0 12px 40px rgba(232,168,56,0.5); }
+    .btn-outline { background: transparent; color: #E8A838; border: 2px solid #E8A838; }
+    .btn-outline:hover { background: rgba(232,168,56,0.1); transform: translateY(-4px); }
+
+    .scroll-indicator {
+      position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+      animation: heroEntry 1s cubic-bezier(0.16,1,0.3,1) 1.2s both;
+    }
+    .scroll-dot { width: 8px; height: 8px; background: #E8A838; border-radius: 50%; margin: 0 auto 10px; animation: scrollBounce 2s ease-in-out infinite; }
+    .scroll-line { width: 1px; height: 45px; background: linear-gradient(to bottom, #E8A838, transparent); margin: 0 auto; }
+
+    /* ─── SECTIONS ─── */
+    .section { padding: 110px 24px; position: relative; }
+    .section-title {
+      font-family: 'Playfair Display', serif; font-size: clamp(34px, 5vw, 54px);
+      font-weight: 800; text-align: center; margin-bottom: 14px;
+    }
+    .section-line { width: 60px; height: 3px; background: linear-gradient(90deg, #E8A838, #F5D27E); margin: 0 auto 52px; border-radius: 3px; }
+    .section-desc { text-align: center; color: #777; font-size: 18px; max-width: 650px; margin: 36px auto 52px; font-weight: 400; line-height: 1.7; }
+
+    /* ─── QUI SOMMES NOUS ─── */
+    .about-text {
+      font-size: 20px; line-height: 1.9; color: #555; font-weight: 300;
+      max-width: 800px; margin: 0 auto; text-align: center;
+    }
+    .about-text strong { color: #1a1a2e; }
+    .about-text .gold { color: #E8A838; font-weight: 700; }
+
+    .stats-grid { display: flex; justify-content: center; gap: 56px; flex-wrap: wrap; margin-top: 56px; }
+    .stat { text-align: center; }
+    .stat-number {
+      font-size: 52px; font-weight: 900; font-family: 'Playfair Display', serif; color: #E8A838;
+    }
+    .stat-label { font-size: 13px; color: #999; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; margin-top: 6px; }
+
+    /* ─── MISSION ─── */
+    .mission-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(185px, 1fr)); gap: 24px; }
+    .mission-card {
+      padding: 34px 20px; border-radius: 22px; text-align: center;
+      background: #fff; border: 1px solid rgba(0,0,0,0.05);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.04);
+      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); cursor: default;
+    }
+    .mission-card:hover { transform: translateY(-14px) scale(1.02); box-shadow: 0 24px 64px rgba(0,0,0,0.1); }
+    .mission-icon {
+      width: 72px; height: 72px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 14px; font-size: 32px; transition: transform 0.5s cubic-bezier(0.16,1,0.3,1);
+    }
+    .mission-card:hover .mission-icon { transform: scale(1.2) rotate(10deg); }
+    .mission-letter {
+      width: 46px; height: 46px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 12px; color: #fff; font-weight: 800; font-size: 19px;
+    }
+    .mission-label { font-weight: 600; font-size: 16px; color: #1a1a2e; }
+
+    /* ─── TIMELINE ─── */
+    .timeline-section { background: #fff; }
+    .year-buttons { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 40px; }
+    .year-btn {
+      padding: 13px 30px; border-radius: 50px; font-weight: 700; font-size: 17px;
+      border: 2px solid rgba(26,26,46,0.15); cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.16,1,0.3,1);
+      font-family: 'Outfit', sans-serif; background: transparent; color: #1a1a2e;
+    }
+    .year-btn:hover { border-color: #E8A838; color: #E8A838; box-shadow: 0 4px 18px rgba(232,168,56,0.15); }
+    .year-btn.active {
+      background: linear-gradient(135deg, #1a1a2e, #0f3460); color: #E8A838;
+      border-color: #E8A838; box-shadow: 0 6px 24px rgba(232,168,56,0.3); transform: scale(1.06);
+    }
+
+    .actions-list { max-width: 700px; margin: 0 auto; min-height: 60px; }
+    .action-card {
+      padding: 20px 24px; background: #fff; border-radius: 16px;
+      border-left: 4px solid #E8A838; margin-bottom: 14px;
+      box-shadow: 0 3px 16px rgba(0,0,0,0.05); display: flex; align-items: center; gap: 14px;
+      animation: cardSlideIn 0.5s cubic-bezier(0.16,1,0.3,1) both;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .action-card:hover { transform: translateX(10px); box-shadow: 0 6px 24px rgba(0,0,0,0.08); }
+    .action-num {
+      width: 38px; height: 38px; border-radius: 50%;
+      background: linear-gradient(135deg, #E8A838, #F5D27E);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: 15px; color: #1a1a2e; flex-shrink: 0;
+    }
+    .action-text { font-weight: 500; font-size: 15px; color: #333; }
+    .actions-placeholder { text-align: center; padding: 48px; color: #bbb; font-size: 17px; }
+
+    /* ─── EVENTS ─── */
+    .events-grid { max-width: 900px; margin: 0 auto; display: grid; gap: 28px; }
+    .event-card {
+      padding: 36px; border-radius: 22px; background: #fff; position: relative; overflow: hidden;
+      border: 1px solid rgba(0,0,0,0.05);
+      box-shadow: 0 8px 36px rgba(0,0,0,0.05);
+      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .event-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; }
+    .event-card:hover { transform: translateY(-10px); box-shadow: 0 24px 64px rgba(0,0,0,0.1); }
+    .event-inner { display: flex; align-items: flex-start; gap: 22px; flex-wrap: wrap; }
+    .event-icon {
+      width: 60px; height: 60px; border-radius: 18px; display: flex; align-items: center; justify-content: center;
+      font-size: 30px; flex-shrink: 0;
+    }
+    .event-body { flex: 1; min-width: 220px; }
+    .event-title { font-size: 21px; font-weight: 700; color: #1a1a2e; margin-bottom: 8px; }
+    .event-date {
+      display: inline-block; padding: 5px 16px; border-radius: 20px; font-weight: 600; font-size: 14px; margin-bottom: 8px;
+    }
+    .event-location { color: #666; font-size: 14px; margin-top: 4px; }
+    .event-details { color: #555; font-size: 14px; margin-top: 10px; line-height: 1.7; font-weight: 500; }
+
+    /* ─── AIDER ─── */
+    .help-grid { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+    .help-card {
+      padding: 40px; border-radius: 22px; position: relative; overflow: hidden;
+      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .help-card:hover { transform: translateY(-8px); }
+    .help-icon { font-size: 40px; margin-bottom: 18px; }
+    .help-title { font-size: 23px; font-weight: 700; color: #1a1a2e; margin-bottom: 20px; }
+    .help-item { display: flex; align-items: center; gap: 12px; padding: 10px 0; }
+    .help-item + .help-item { border-top: 1px solid rgba(0,0,0,0.05); }
+    .help-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+    .help-item span { color: #555; font-weight: 500; font-size: 15px; }
+
+    /* ─── PARTENAIRES ─── */
+    .partner-section {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 45%, #0f3460 100%);
+      color: #fff; position: relative; overflow: hidden;
+    }
+    .partner-list { max-width: 620px; margin: 0 auto; }
+    .partner-benefit {
+      display: flex; align-items: flex-start; gap: 18px; padding: 22px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.07); transition: all 0.3s ease;
+    }
+    .partner-benefit:last-child { border-bottom: none; }
+    .partner-benefit:hover { padding-left: 14px; }
+    .partner-benefit .pb-icon { font-size: 26px; flex-shrink: 0; }
+    .partner-benefit .pb-text { color: rgba(255,255,255,0.8); font-size: 16px; font-weight: 400; line-height: 1.7; }
+
+    /* ─── TRANSPARENCE ─── */
+    .trust-badges { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; margin-bottom: 44px; }
+    .trust-badge {
+      display: inline-flex; align-items: center; gap: 10px; padding: 14px 24px;
+      border-radius: 14px; border: 1px solid rgba(0,0,0,0.06);
+      background: rgba(255,255,255,0.7); backdrop-filter: blur(10px);
+      font-size: 14px; font-weight: 500; color: #555;
+      transition: all 0.3s ease;
+    }
+    .trust-badge:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.06); }
+    .trust-check { color: #10B981; font-size: 18px; font-weight: 700; }
+    .quote {
+      font-family: 'Playfair Display', serif; font-size: clamp(22px, 3.5vw, 34px);
+      font-style: italic; color: #1a1a2e; line-height: 1.5; font-weight: 700; text-align: center;
+      max-width: 700px; margin: 0 auto;
+    }
+
+    /* ─── FOOTER ─── */
+    .footer {
+      background: #0d0d1a; color: #fff; padding: 70px 24px 36px; position: relative; overflow: hidden; text-align: center;
+    }
+    .footer::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, #E8A838, #F5D27E, #E8A838); }
+    .footer-logo {
+      width: 84px; height: 84px; border-radius: 50%;
+      background: #fff; overflow: hidden;
+      display: inline-flex; align-items: center; justify-content: center;
+      margin-bottom: 22px;
+      box-shadow: 0 0 30px rgba(232,168,56,0.3);
+    }
+    .footer-logo img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+    .footer h3 {
+      font-family: 'Playfair Display', serif; font-size: 34px; font-weight: 800;
+      background: linear-gradient(135deg, #E8A838, #F5D27E);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text; margin-bottom: 8px;
+    }
+    .footer-sub { color: rgba(255,255,255,0.45); font-size: 15px; margin-bottom: 28px; }
+    .footer-founder { color: rgba(255,255,255,0.7); font-size: 15px; font-weight: 500; margin-bottom: 6px; }
+    .footer-founder strong { color: #E8A838; }
+    .footer-contacts { display: flex; flex-wrap: wrap; justify-content: center; gap: 28px; margin-top: 22px; margin-bottom: 36px; }
+    .footer-contacts a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 15px; transition: color 0.3s; }
+    .footer-contacts a:hover { color: #E8A838; }
+    .footer-contacts a.email { color: #E8A838; font-weight: 500; }
+    .footer-social { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin: 28px 0 20px; }
+    .footer-social a {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.75); text-decoration: none;
+      padding: 9px 18px; border-radius: 50px; font-size: 14px; font-weight: 500;
+      transition: all 0.3s;
+    }
+    .footer-social a:hover { background: rgba(232,168,56,0.15); border-color: #E8A838; color: #E8A838; transform: translateY(-2px); }
+    .footer-social a svg { width: 17px; height: 17px; flex-shrink: 0; }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.07); padding-top: 24px;
+      color: rgba(255,255,255,0.25); font-size: 13px;
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 768px) {
+      .hamburger { display: flex; }
+      .nav-links { display: none; }
+      .stats-grid { gap: 32px; }
+      .stat-number { font-size: 42px; }
+      .section { padding: 80px 20px; }
+      .mission-grid { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 16px; }
+      .mission-card { padding: 24px 14px; }
+      .help-grid { grid-template-columns: 1fr; }
+      .footer-contacts { flex-direction: column; gap: 14px; }
+    }
+
+    .tabs-wrap { max-width: 1100px; margin: 0 auto; }
+    .tabs-nav { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-bottom: 36px; }
+    .tab-btn {
+      padding: 14px 28px; border-radius: 16px; border: 2px solid rgba(26,26,46,0.12);
+      background: #fff; cursor: pointer; font-family: 'Outfit', sans-serif;
+      font-size: 15px; font-weight: 600; color: #1a1a2e; line-height: 1.4; text-align: center;
+      transition: all 0.4s cubic-bezier(0.16,1,0.3,1);
+    }
+    .tab-btn small { font-size: 12px; font-weight: 400; color: #999; display: block; }
+    .tab-btn:hover { border-color: #E8A838; color: #E8A838; transform: translateY(-3px); }
+    .tab-btn.active {
+      background: linear-gradient(135deg,#1a1a2e,#0f3460); color: #E8A838;
+      border-color: #E8A838; box-shadow: 0 8px 28px rgba(232,168,56,0.25); transform: scale(1.04);
+    }
+    .tab-btn.active small { color: rgba(232,168,56,0.7); }
+    .edition-header { text-align: center; margin-bottom: 28px; }
+    .edition-header h3 { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 800; color: #1a1a2e; }
+    .edition-sites { color: #888; font-size: 14px; margin-top: 8px; }
+    .video-wrap {
+      position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;
+      border-radius: 18px; margin-bottom: 32px; box-shadow: 0 12px 48px rgba(0,0,0,0.12);
+    }
+    .video-wrap iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 18px; }
+    .photo-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; }
+    .grid-item {
+      position: relative; border-radius: 14px; overflow: hidden; cursor: pointer;
+      aspect-ratio: 1; background: #f0f0f0;
+      transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s;
+    }
+    .grid-item:hover { transform: scale(1.04); box-shadow: 0 12px 36px rgba(0,0,0,0.15); }
+    .grid-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .grid-overlay {
+      position: absolute; inset: 0; background: rgba(26,26,46,0.45);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; transition: opacity 0.3s; font-size: 28px;
+    }
+    .grid-item:hover .grid-overlay { opacity: 1; }
+    .lightbox {
+      display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.92);
+      z-index: 9999; align-items: center; justify-content: center;
+    }
+    .lightbox.open { display: flex; }
+    .lb-inner { position: relative; max-width: 90vw; max-height: 90vh; display: flex; align-items: center; gap: 16px; }
+    .lb-inner img { max-width: 80vw; max-height: 85vh; border-radius: 12px; object-fit: contain; }
+    .lb-close {
+      position: absolute; top: -44px; right: 0; background: none; border: none;
+      color: #fff; font-size: 28px; cursor: pointer; padding: 8px; transition: transform 0.2s;
+    }
+    .lb-close:hover { transform: scale(1.2); color: #E8A838; }
+    .lb-prev, .lb-next {
+      background: rgba(255,255,255,0.12); border: none; color: #fff;
+      font-size: 28px; padding: 16px 20px; border-radius: 50px; cursor: pointer;
+      transition: all 0.3s; flex-shrink: 0;
+    }
+    .lb-prev:hover, .lb-next:hover { background: #E8A838; color: #1a1a2e; }
+    .lb-counter { position: absolute; bottom: -36px; left: 50%; transform: translateX(-50%); color: rgba(255,255,255,0.6); font-size: 14px; }
+    .don-grid { max-width: 860px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 28px; }
+    .don-card { padding: 40px; border-radius: 24px; text-align: center; transition: transform 0.4s cubic-bezier(0.16,1,0.3,1); }
+    .don-card:hover { transform: translateY(-8px); }
+    .don-online { background: rgba(255,255,255,0.07); border: 1px solid rgba(232,168,56,0.25); }
+    .don-mobile { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1); }
+    .don-icon { font-size: 44px; margin-bottom: 16px; }
+    .don-card h3 { color: #E8A838; font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 800; margin-bottom: 10px; }
+    .don-card p { color: rgba(255,255,255,0.65); font-size: 15px; }
+    .mm-cards { margin-top: 24px; display: flex; flex-direction: column; gap: 16px; }
+    .mm-item {
+      display: flex; align-items: center; gap: 16px; padding: 16px 20px;
+      background: rgba(255,255,255,0.08); border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.1); text-align: left;
+    }
+    .mm-logo { width: 52px; height: 52px; object-fit: contain; border-radius: 10px; background: #fff; padding: 4px; flex-shrink: 0; }
+    .mm-info { display: flex; flex-direction: column; gap: 4px; }
+    .mm-info strong { color: #E8A838; font-size: 15px; font-weight: 700; }
+    .mm-info span { color: rgba(255,255,255,0.7); font-size: 14px; }
+
+  
+    /* Mobile Responsiveness */
+    @media (max-width: 768px) {
+      body { padding-top: 60px; }
+      nav { height: 60px; }
+      .hero { margin-top: 20px; }
+      
+      /* Gallery tabs mobile */
+      .gallery-tabs { flex-wrap: wrap; gap: 8px; }
+      .tab-btn { padding: 10px 15px; font-size: 14px; }
+      
+      /* Don section mobile */
+      .don-section { padding: 30px 20px; }
+      .don-btn { padding: 12px 20px; font-size: 16px; width: 100%; max-width: 300px; }
+      
+      /* mm-items mobile */
+      .mm-items { grid-template-columns: 1fr; }
+      
+      /* Tabs containment */
+      .tab-panel { width: 100%; }
+      .tabs-content { width: 100%; }
+      
+      /* Mobile menu */
+      .nav-links { display: none; }
+      .nav-links.active { display: flex; flex-direction: column; position: absolute; top: 60px; left: 0; right: 0; background: white; z-index: 999; }
+      .hamburger { display: block; }
+      
+      /* Timeline mobile */
+      .timeline-item { margin-left: 0; padding-left: 30px; }
+      
+      /* Gallery grid mobile */
+      .gallery-grid { grid-template-columns: 1fr; gap: 15px; }
+      
+      /* Section descriptions */
+      .section-desc { font-size: 16px; margin: 20px auto 30px; }
+    }
+    /* ─── FRIENDS PAGE ─── */
+    .hero-friends {
+      min-height: 60vh; position: relative; overflow: hidden;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 35%, #0f3460 65%, #1a1a2e 100%);
+      background-size: 300% 300%; animation: gradientFlow 14s ease infinite;
+      display: flex; align-items: center; justify-content: center; text-align: center;
+    }
+    .hero-logo-wrap {
+      width: 120px; height: 120px; border-radius: 50%; background: #fff; overflow: hidden;
+      display: inline-flex; align-items: center; justify-content: center;
+      box-shadow: 0 0 70px rgba(232,168,56,0.45), 0 0 0 4px rgba(232,168,56,0.25);
+      animation: heroEntry 1s cubic-bezier(0.16,1,0.3,1) forwards, pulse 4s ease-in-out 2s infinite;
+      margin-bottom: 28px;
+    }
+    .hero-logo-wrap img { width: 100%; height: 100%; object-fit: cover; }
+    .hero-friends h1 {
+      font-family: 'Playfair Display', serif; font-size: clamp(42px, 8vw, 80px);
+      font-weight: 900; line-height: 1.1;
+      background: linear-gradient(135deg, #E8A838, #F5D27E, #E8A838);
+      background-size: 200% auto; animation: heroEntry 1s 0.15s both, shimmer 3.5s linear infinite;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .hero-friends .hero-sub {
+      color: rgba(255,255,255,0.6); font-size: clamp(14px, 2.2vw, 19px);
+      letter-spacing: 4px; text-transform: uppercase; font-weight: 300;
+      animation: heroEntry 1s 0.35s both; margin-top: 18px;
+    }
+    .hero-badge-friends {
+      display: inline-block; padding: 10px 30px; border: 1px solid rgba(232,168,56,0.4);
+      border-radius: 50px; color: #E8A838; font-size: 14px; letter-spacing: 2px; font-weight: 500;
+      background: rgba(232,168,56,0.07);
+      animation: heroEntry 1s 0.55s both, borderGlow 3s ease-in-out infinite; margin-top: 22px;
+    }
+    .presentation-block {
+      max-width: 860px; margin: 0 auto; background: #fff; border-radius: 24px;
+      padding: 52px 56px; box-shadow: 0 10px 50px rgba(0,0,0,0.06);
+      border-left: 5px solid #E8A838; position: relative; overflow: hidden;
+    }
+    .presentation-block::before {
+      content: '\2039\2039'; position: absolute; top: 20px; left: 30px;
+      font-size: 80px; color: rgba(232,168,56,0.08); font-family: serif; line-height: 1;
+    }
+    .presentation-block p { font-size: 17px; line-height: 2; color: #444; font-weight: 300; position: relative; z-index: 1; }
+    .presentation-block strong { color: #E8A838; font-weight: 700; }
+    .presentation-highlight {
+      display: inline-block; margin-top: 28px; padding: 14px 28px;
+      background: linear-gradient(135deg, #1a1a2e, #0f3460); color: #E8A838;
+      border-radius: 14px; font-size: 15px; font-weight: 600; font-style: italic;
+    }
+    .logos-section { background: #FAFAF8; }
+    .logos-grid {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 20px;
+    }
+    .friend-logo-card {
+      background: #fff; border-radius: 18px; padding: 20px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+      transition: all 0.4s cubic-bezier(0.16,1,0.3,1); cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .friend-logo-card:hover { transform: translateY(-8px) scale(1.03); box-shadow: 0 16px 48px rgba(232,168,56,0.15); border-color: rgba(232,168,56,0.3); }
+    .friend-logo-wrap { width: 140px; height: 140px; display: flex; align-items: center; justify-content: center; }
+    .friend-logo-wrap img { max-width: 100%; max-height: 100%; object-fit: contain; }
+    .lightbox-friends { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 9999; align-items: center; justify-content: center; }
+    .lightbox-friends.open { display: flex; }
+    .lb-inner { position: relative; max-width: 90vw; max-height: 90vh; display: flex; align-items: center; gap: 16px; }
+    .lb-inner img { max-width: 80vw; max-height: 85vh; border-radius: 12px; object-fit: contain; background: #fff; padding: 20px; }
+    .lb-close { position: absolute; top: -44px; right: 0; background: none; border: none; color: #fff; font-size: 28px; cursor: pointer; padding: 8px; }
+    .lb-close:hover { color: #E8A838; }
+    .lb-prev, .lb-next { background: rgba(255,255,255,0.12); border: none; color: #fff; font-size: 26px; padding: 14px 18px; border-radius: 50px; cursor: pointer; transition: all 0.3s; flex-shrink: 0; }
+    .lb-prev:hover, .lb-next:hover { background: #E8A838; color: #1a1a2e; }
+    .lb-counter { position: absolute; bottom: -36px; left: 50%; transform: translateX(-50%); color: rgba(255,255,255,0.6); font-size: 14px; }
+    .cta-section { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 45%, #0f3460 100%); }
+    .footer-logo-wrap { width: 72px; height: 72px; border-radius: 50%; background: #fff; overflow: hidden; display: inline-flex; align-items: center; justify-content: center; margin-bottom: 18px; box-shadow: 0 0 24px rgba(232,168,56,0.25); }
+    .footer-logo-wrap img { width: 100%; height: 100%; object-fit: cover; }
+    @media (max-width: 768px) {
+      .logos-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 14px; }
+      .presentation-block { padding: 32px 24px; }
+    }
+
+    /* ─── POPUP DON ─── */
+    .don-popup-overlay {
+      display: none; position: fixed; inset: 0; z-index: 8000;
+      background: rgba(10,10,25,0.85); backdrop-filter: blur(6px);
+      align-items: center; justify-content: center; padding: 20px;
+    }
+    .don-popup-overlay.open { display: flex; animation: fadeIn 0.35s ease; }
+    @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+    .don-popup-box {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      border-radius: 28px; padding: 48px 44px; max-width: 600px; width: 100%;
+      position: relative; box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+      border: 1px solid rgba(232,168,56,0.2);
+      animation: popupSlide 0.4s cubic-bezier(0.16,1,0.3,1);
+    }
+    @keyframes popupSlide { from { opacity:0; transform:scale(0.9) translateY(30px); } to { opacity:1; transform:scale(1) translateY(0); } }
+    .don-popup-close {
+      position: absolute; top: 18px; right: 20px; background: rgba(255,255,255,0.1);
+      border: none; color: #fff; font-size: 20px; width: 38px; height: 38px;
+      border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center;
+      transition: background 0.3s;
+    }
+    .don-popup-close:hover { background: rgba(232,168,56,0.4); }
+    .don-popup-badge {
+      display: inline-block; background: rgba(232,168,56,0.15); color: #E8A838;
+      border: 1px solid rgba(232,168,56,0.3); border-radius: 30px;
+      padding: 6px 18px; font-size: 12px; letter-spacing: 2px;
+      text-transform: uppercase; font-weight: 600; margin-bottom: 20px;
+    }
+    .don-popup-title { font-family: 'Playfair Display', serif; color: #fff; font-size: clamp(20px,4vw,28px); margin-bottom: 14px; line-height: 1.3; }
+    .don-popup-quote {
+      color: #E8A838; font-style: italic; font-size: 15px; margin-bottom: 20px;
+      border-left: 3px solid #E8A838; padding-left: 16px; line-height: 1.7;
+    }
+    .don-popup-reasons { list-style: none; margin-bottom: 28px; }
+    .don-popup-reasons li { color: rgba(255,255,255,0.8); font-size: 14px; padding: 5px 0; display: flex; align-items: flex-start; gap: 8px; }
+    .don-popup-reasons li::before { content: '✦'; color: #E8A838; flex-shrink: 0; font-size: 11px; margin-top: 3px; }
+    .don-popup-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+    .don-popup-btn-primary {
+      flex: 1; min-width: 200px; background: linear-gradient(135deg, #E8A838, #F5D27E);
+      color: #1a1a2e; border: none; border-radius: 50px; padding: 15px 28px;
+      font-weight: 700; font-size: 15px; cursor: pointer; text-decoration: none;
+      text-align: center; display: block; transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .don-popup-btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(232,168,56,0.35); }
+    .don-popup-mm { flex: 1; min-width: 160px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 16px; padding: 14px 18px; }
+    .don-popup-mm strong { color: #fff; font-size: 13px; display: block; margin-bottom: 8px; }
+    .don-popup-mm-item { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+    .don-popup-mm-item img { width: 28px; height: 28px; border-radius: 6px; object-fit: cover; background: #fff; padding: 2px; }
+    .don-popup-mm-item span { color: rgba(255,255,255,0.75); font-size: 13px; }
+    .don-popup-skip { text-align: center; margin-top: 18px; }
+    .don-popup-skip button { background: none; border: none; color: rgba(255,255,255,0.4); font-size: 13px; cursor: pointer; text-decoration: underline; }
+    @media (max-width: 480px) { .don-popup-box { padding: 32px 22px; } .don-popup-actions { flex-direction: column; } }
+
+    /* ─── SECTION PRÉSENTATION ─── */
+    #presentation {
+      background: #fff; padding: 110px 24px;
+    }
+    .pres-wrapper {
+      max-width: 900px; margin: 0 auto;
+    }
+    .pres-histoire {
+      background: #fff; border-radius: 24px; padding: 52px 56px;
+      box-shadow: 0 10px 50px rgba(0,0,0,0.06); border-left: 5px solid #E8A838;
+      position: relative; overflow: hidden; margin-bottom: 52px;
+    }
+    .pres-histoire::before {
+      content: '\2039\2039'; position: absolute; top: 20px; left: 30px;
+      font-size: 80px; color: rgba(232,168,56,0.08); font-family: serif; line-height: 1;
+    }
+    .pres-histoire p { font-size: 17px; line-height: 2; color: #444; font-weight: 300; position: relative; z-index: 1; margin-bottom: 16px; }
+    .pres-histoire strong { color: #E8A838; font-weight: 700; }
+    .pres-history-quote {
+      display: inline-block; margin-top: 8px; padding: 14px 28px;
+      background: linear-gradient(135deg, #1a1a2e, #0f3460); color: #E8A838;
+      border-radius: 14px; font-size: 15px; font-weight: 600; font-style: italic;
+    }
+    .pres-values-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 16px; margin-top: 40px;
+    }
+    .pres-value-card {
+      background: #FAFAF8; border-radius: 16px; padding: 22px 18px; text-align: center;
+      border: 1px solid rgba(232,168,56,0.1); transition: all 0.4s ease;
+    }
+    .pres-value-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(232,168,56,0.12); border-color: rgba(232,168,56,0.3); }
+    .pres-value-icon { font-size: 28px; margin-bottom: 10px; }
+    .pres-value-label { font-weight: 600; font-size: 14px; color: #1a1a2e; }
+    @media (max-width: 768px) { .pres-histoire { padding: 32px 24px; } }
+
+    /* ─── SECTION FONDATRICE ─── */
+    #fondatrice {
+      background: linear-gradient(135deg, #FAFAF8 0%, #FFF9ED 100%);
+      padding: 110px 24px; text-align: center;
+    }
+    .fondatrice-inner { max-width: 700px; margin: 0 auto; }
+    .fondatrice-photo-wrap {
+      margin: 0 auto 36px;
+      display: inline-block;
+      position: relative;
+    }
+    .fondatrice-photo-wrap::before {
+      content: ''; position: absolute; inset: -8px; border-radius: 32px;
+      background: linear-gradient(135deg, #E8A838, #F5D27E, #1a1a2e);
+      z-index: 0; opacity: 0.35;
+    }
+    .fondatrice-photo-wrap img {
+      display: block; width: 320px; max-width: 90vw;
+      border-radius: 28px; position: relative; z-index: 1;
+      box-shadow: 0 20px 60px rgba(232,168,56,0.25);
+      object-fit: contain; background: #fff; padding: 6px;
+    }
+    .fondatrice-name { font-family: 'Playfair Display', serif; font-size: clamp(22px,4vw,30px); font-weight: 800; color: #1a1a2e; margin-bottom: 6px; }
+    .fondatrice-title { color: #E8A838; font-weight: 600; font-size: 15px; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 24px; }
+    .fondatrice-bio { font-size: 16px; line-height: 1.9; color: #555; max-width: 580px; margin: 0 auto; }
+
+  </style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="#" class="nav-brand">
+        <div class="nav-logo"><img src="logo.jpg" alt="Logo Association Marianne & Friends"></div>
+        <span>Association Marianne & Friends</span>
+      </a>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-links" id="navLinksDesktop">
+        <a href="#presentation">Association</a>
+        <a href="#fondatrice">Fondatrice</a>
+        <a href="#mission">Mission</a>
+        <a href="#events">Événements</a>
+        <a href="#galerie">Galerie</a>
+        <a href="#partenaires">Partenaires</a>
+        <a href="friends.html" style="color:rgba(255,255,255,0.75)">Friends</a>
+        <a href="#" onclick="openDonPopup();return false;" style="background:linear-gradient(135deg,#E8A838,#F5D27E);color:#1a1a2e;padding:8px 20px;border-radius:50px;font-weight:700">Faire un don</a>
+      </div>
+      <div class="mobile-menu" id="mobileMenu">
+        <a href="#presentation" onclick="closeMobile()">Association</a>
+        <a href="#fondatrice" onclick="closeMobile()">Fondatrice</a>
+        <a href="#mission" onclick="closeMobile()">Mission</a>
+        <a href="#events" onclick="closeMobile()">Événements</a>
+        <a href="#galerie" onclick="closeMobile()">Galerie</a>
+        <a href="#partenaires" onclick="closeMobile()">Partenaires</a>
+        <a href="friends.html" onclick="closeMobile()">Friends</a>
+        <a href="#" onclick="closeMobile();openDonPopup();">Faire un don</a>
+      </div>
+    </div>
+  </nav>
+
+<!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-content">
+      <div class="hero-emblem"><img src="logo.jpg" alt="Logo Association Marianne & Friends"></div>
+      <h1>Association Marianne & Friends</h1>
+      <p class="hero-sub">5 ans de solidarité</p>
+      <div class="hero-badge">Donner · Partager · Transformer des vies</div>
+      <div class="hero-buttons">
+        <a href="#" onclick="openDonPopup();return false;" class="btn btn-primary">Faire un don</a>
+        <a href="#presentation" class="btn btn-outline">Découvrir</a>
+      </div>
+    </div>
+    <div class="scroll-indicator">
+      <div class="scroll-dot"></div>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       SECTION PRÉSENTATION DE L'ASSOCIATION
+  ════════════════════════════════════════════ -->
+  <section id="presentation">
+    <div class="pres-wrapper">
+      <div class="reveal" style="text-align:center;margin-bottom:52px;">
+        <h2 class="section-title">L'Histoire de Marianne &amp; Friends</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="pres-histoire reveal" style="transition-delay:0.1s">
+        <p><em>En 2022, tout a commencé par un appel du cœur.</em></p>
+        <p>Durant le mois de carême, une professionnelle de la pédiatrie de l'Hôpital de Grand Yoff a contacté Marianne pour aider les enfants prématurés. La raison de ce contact : l'année précédente, Marianne avait aidé sa pédiatrie en tant que bénévole dans une autre association, <strong>APLE – l'Association pour l'Épanouissement des Enfants</strong>, et la professionnelle pensait que cette initiative lui appartenait. Marianne a dû expliquer qu'elle n'était pas responsable de cette association, que le responsable d'APLE était en voyage.</p>
+        <p>À ce moment-là, Marianne venait de vivre une période intense et éprouvante. Bien que consciente du besoin, elle n'avait pas les moyens immédiats de contribuer financièrement ou matériellement. Malgré cela, Marianne a été profondément touchée par cette sollicitation. Quelques jours plus tard, une situation personnelle l'a conduite à réfléchir à nouveau à cet appel : elle a compris qu'il s'agissait d'un signal pour agir, et elle s'est promise qu'au moment où elle le pourrait, elle aiderait ces enfants et leurs familles.</p>
+        <p>Pour concrétiser ce geste, elle a mobilisé son réseau. Un statut WhatsApp, une amie, une rencontre fortuite avec un professionnel créatif et un lien familial inattendu ont permis de créer rapidement un flyer digital et de lancer une collecte du <strong>13 Mars au 13 Avril 2022</strong>. C'est à ce moment-là que le nom <strong>« Marianne &amp; Friends »</strong> a vu le jour. Lorsque le professionnel lui a demandé comment elle voulait appeler ce projet, Marianne a choisi :</p>
+        <p>
+          ● <strong>Marianne</strong>, parce que l'initiative venait de son engagement personnel, de son cœur.<br>
+          ● <strong>Friends</strong>, pour rendre hommage à tous les amis qui ont participé et accepté de prêter leur logo pour l'affiche. Ce nom symbolise la gratitude et l'esprit collectif qui anime l'association.
+        </p>
+        <p>En un mois seulement, la collecte a permis de réunir <strong>un million de francs CFA</strong>. Les fonds ont été utilisés pour soutenir les enfants de la pédiatrie de l'Hôpital de Grand Yoff, puis ceux de l'Hôpital Albert Royer, et enfin les enfants orphelins de la Pouponnière de Médina. Chaque étape a été suivie avec rigueur et transparence, et documentée grâce au partenariat avec la maison de production <strong>Catholicom</strong>, afin que chaque contributeur puisse constater l'impact de sa générosité.</p>
+        <p>Cette première initiative a révélé les principes fondateurs de l'association :</p>
+        <p>
+          ● <strong>L'importance de l'humain et de la compassion</strong> : chaque action part du cœur et des besoins réels des bénéficiaires.<br>
+          ● <strong>La mobilisation collective</strong> : l'impact se construit grâce au réseau de soutien, aux amis, partenaires et à la communauté.<br>
+          ● <strong>La transparence et la responsabilité</strong> : chaque don est valorisé et chaque action est rendue visible.<br>
+          ● <strong>La persévérance et la foi en l'impact</strong> : même avec des ressources limitées, il est possible de transformer une volonté en action concrète.
+        </p>
+        <p>C'est ainsi que <strong>Marianne &amp; Friends</strong> est née : d'un geste humble, d'un appel à l'aide et d'une détermination à faire une différence tangible. Depuis, l'association n'a cessé de grandir, soutenant enfants, familles et structures vulnérables à travers le Sénégal, avec toujours le même objectif : <strong>allier humanité, solidarité et action durable.</strong></p>
+        <div class="presentation-highlight">❝ Le sourire toujours, grâce à vous. ❞</div>
+      </div>
+
+      <!-- Vision -->
+      <div class="reveal" style="text-align:center;margin:52px 0 24px;transition-delay:0.2s">
+        <h3 style="font-family:'Playfair Display',serif;font-size:clamp(20px,3vw,26px);color:#1a1a2e;margin-bottom:14px;">Notre Vision</h3>
+        <p style="font-size:17px;color:#555;line-height:1.9;max-width:720px;margin:0 auto;">
+          Construire un Sénégal où la solidarité est vécue comme une <strong style="color:#E8A838">responsabilité collective</strong>, et où chaque personne vulnérable peut trouver soutien, considération et espoir. Marianne &amp; Friends agit à l'échelle nationale avec l'ambition de renforcer progressivement son impact, sans exclure de futures collaborations internationales.
+        </p>
+      </div>
+
+      <!-- Valeurs -->
+      <div class="reveal" style="transition-delay:0.3s">
+        <div class="pres-values-grid">
+          <div class="pres-value-card"><div class="pres-value-icon">🤝</div><div class="pres-value-label">Solidarité</div></div>
+          <div class="pres-value-card"><div class="pres-value-icon">🌱</div><div class="pres-value-label">Impact durable</div></div>
+          <div class="pres-value-card"><div class="pres-value-icon">❤️</div><div class="pres-value-label">Humanité</div></div>
+          <div class="pres-value-card"><div class="pres-value-icon">🕊️</div><div class="pres-value-label">Compassion</div></div>
+          <div class="pres-value-card"><div class="pres-value-icon">✨</div><div class="pres-value-label">Dignité</div></div>
+          <div class="pres-value-card"><div class="pres-value-icon">🙌</div><div class="pres-value-label">Engagement</div></div>
+          <div class="pres-value-card"><div class="pres-value-icon">📋</div><div class="pres-value-label">Responsabilité</div></div>
+          <div class="pres-value-card"><div class="pres-value-icon">🔍</div><div class="pres-value-label">Transparence</div></div>
+          <div class="pres-value-card"><div class="pres-value-icon">🫶</div><div class="pres-value-label">Respect</div></div>
+        </div>
+      </div>
+
+      <!-- PDF DOWNLOAD BLOCK -->
+      <div class="reveal" style="transition-delay:0.35s; margin-top:52px; text-align:center;">
+        <div style="background:linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%); border-radius:24px; padding:44px 40px; max-width:700px; margin:0 auto; border:1px solid rgba(232,168,56,0.2); position:relative; overflow:hidden;">
+          <div style="position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#E8A838,#F5D27E,#E8A838);"></div>
+          <div style="font-size:48px; margin-bottom:16px;">📄</div>
+          <h3 style="font-family:'Playfair Display',serif; color:#fff; font-size:22px; margin-bottom:10px;">Présentation Officielle</h3>
+          <p style="color:rgba(255,255,255,0.65); font-size:15px; margin-bottom:28px; line-height:1.7;">
+            Téléchargez ou consultez la présentation complète de l'Association Marianne &amp; Friends — histoire, mission, vision, réalisations et projets 2026.
+          </p>
+          <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
+            <a href="presentation.pdf" target="_blank" rel="noopener"
+               style="display:inline-flex; align-items:center; gap:10px; background:linear-gradient(135deg,#E8A838,#F5D27E); color:#1a1a2e; text-decoration:none; padding:14px 28px; border-radius:50px; font-weight:700; font-size:15px; transition:transform 0.2s,box-shadow 0.2s;"
+               onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 10px 30px rgba(232,168,56,0.4)'"
+               onmouseout="this.style.transform='';this.style.boxShadow=''">
+              👁️ Consulter en ligne
+            </a>
+            <a href="presentation.pdf" download="Presentation-Marianne-Friends.pdf"
+               style="display:inline-flex; align-items:center; gap:10px; background:rgba(255,255,255,0.1); color:#fff; text-decoration:none; padding:14px 28px; border-radius:50px; font-weight:600; font-size:15px; border:1px solid rgba(255,255,255,0.2); transition:background 0.2s;"
+               onmouseover="this.style.background='rgba(255,255,255,0.18)'"
+               onmouseout="this.style.background='rgba(255,255,255,0.1)'">
+              ⬇️ Télécharger le PDF
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       SECTION LA FONDATRICE
+  ════════════════════════════════════════════ -->
+  <section id="fondatrice">
+    <div class="fondatrice-inner">
+      <div class="reveal" style="text-align:center;margin-bottom:48px;">
+        <h2 class="section-title">La Fondatrice</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="fondatrice-photo-wrap reveal" style="transition-delay:0.1s">
+        <img src="photos/curtis.jpg" alt="Mme Marianne Manga Curtis – Fondatrice & Présidente"
+             onerror="this.parentElement.style.display='none'">
+      </div>
+      <h3 class="fondatrice-name reveal" style="transition-delay:0.2s">Mme CURTIS Marianne S. D. MANGA</h3>
+      <p class="fondatrice-title reveal" style="transition-delay:0.25s">Fondatrice &amp; Présidente</p>
+      <p class="fondatrice-bio reveal" style="transition-delay:0.3s">
+        Avant d'être un projet structuré, Marianne &amp; Friends est une initiative profondément humaine. En 2022, Marianne a agi par sensibilité, par compassion, par responsabilité morale face aux réalités observées dans les structures hospitalières et au sein des communautés.<br><br>
+        Son engagement est d'abord humain. Son moteur : <strong>la dignité des personnes vulnérables.</strong><br><br>
+        Ingénieure logistique spécialisée en Supply Chain Management et Responsable Administrative et Financière, elle possède des compétences solides en gestion et organisation. Mais ces compétences ne sont pas le point de départ du projet : elles en sont la valeur ajoutée. <em>Le cœur a initié l'action. La compétence en assure la durabilité.</em>
+      </p>
+    </div>
+  </section>
+
+  <!-- QUI SOMMES NOUS -->
+  <section class="section" style="background:#fff">
+    <div class="reveal">
+      <h2 class="section-title">Qui sommes-nous ?</h2>
+      <div class="section-line"></div>
+      <p class="about-text">
+        <strong>Marianne &amp; Friends</strong> est née d'un élan du cœur. Organisation caritative à but non lucratif
+        œuvrant au Sénégal, elle agit pour l'amélioration durable des conditions de vie des populations vulnérables. Créée en <span class="gold">2022</span>,
+        l'association repose sur une conviction profonde : <em>la solidarité ne doit pas être occasionnelle,
+        elle doit être sincère, constante et humaine.</em>
+      </p>
+      <p class="about-text" style="margin-top:18px;">
+        Face à la vulnérabilité des enfants hospitalisés, des familles en difficulté et des femmes en situation précaire,
+        Marianne &amp; Friends s'est construite autour d'un principe simple : <strong style="color:#E8A838">Être présent là où le besoin est réel.</strong>
+      </p>
+      <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin:28px auto 0;max-width:750px;">
+        <span style="background:#FFF9ED;border:1px solid rgba(232,168,56,0.3);border-radius:30px;padding:8px 18px;font-size:14px;color:#555;font-weight:500;">👶 Enfants hospitalisés</span>
+        <span style="background:#FFF9ED;border:1px solid rgba(232,168,56,0.3);border-radius:30px;padding:8px 18px;font-size:14px;color:#555;font-weight:500;">🏥 Structures pédiatriques</span>
+        <span style="background:#FFF9ED;border:1px solid rgba(232,168,56,0.3);border-radius:30px;padding:8px 18px;font-size:14px;color:#555;font-weight:500;">👨‍👩‍👧 Familles en précarité</span>
+        <span style="background:#FFF9ED;border:1px solid rgba(232,168,56,0.3);border-radius:30px;padding:8px 18px;font-size:14px;color:#555;font-weight:500;">👩 Femmes vulnérables</span>
+        <span style="background:#FFF9ED;border:1px solid rgba(232,168,56,0.3);border-radius:30px;padding:8px 18px;font-size:14px;color:#555;font-weight:500;">🌍 Communautés locales</span>
+      </div>
+    </div>
+    <div class="stats-grid">
+      <div class="stat reveal" style="transition-delay:0.1s">
+        <div class="stat-number" data-count="5">0</div>
+        <div class="stat-label">Années d'action</div>
+      </div>
+      <div class="stat reveal" style="transition-delay:0.25s">
+        <div class="stat-number" data-count="8">0</div>
+        <div class="stat-label">Structures aidées</div>
+      </div>
+      <div class="stat reveal" style="transition-delay:0.4s">
+        <div class="stat-number" data-count="800">0</div>
+        <div class="stat-label">Invités au Gala</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MISSION -->
+  <section id="mission" class="section" style="background:#FAFAF8">
+    <div class="reveal">
+      <h2 class="section-title">Notre Mission</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="mission-grid" id="missionGrid"></div>
+  </section>
+
+  <!-- ACTIONS TIMELINE -->
+  <section id="actions" class="section timeline-section">
+    <div class="reveal">
+      <h2 class="section-title">Nos Principes et Actions</h2>
+      <div class="section-line"></div>
+    </div>
+    <div style="max-width:800px;margin:0 auto">
+      <div class="year-buttons reveal" style="transition-delay:0.15s" id="yearButtons"></div>
+      <div class="actions-list" id="actionsList">
+        <div class="actions-placeholder">👆 Cliquez sur une année pour découvrir nos actions</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EVENTS -->
+  <section id="events" class="section" style="background:#FAFAF8">
+    <div class="reveal">
+      <h2 class="section-title">5ème Édition · Spécial 5 Ans 2026</h2>
+      <p class="section-desc">5 ans d'engagement. 5 ans de solidarité. 5 ans d'humanité. — Une ambition renforcée.</p>
+      <div class="section-line"></div>
+    </div>
+    <div class="events-grid" id="eventsGrid"></div>
+  </section>
+
+  <!-- COMMENT AIDER -->
+  <section id="aider" class="section" style="background:#fff">
+    <div class="reveal">
+      <h2 class="section-title">Comment pouvez-vous aider ?</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="help-grid">
+      <div class="help-card reveal-left" style="background:linear-gradient(135deg,#FFF9ED,#FFF3D6);border:1px solid rgba(232,168,56,0.12)">
+        <div class="help-icon">🎁</div>
+        <div class="help-title">Dons en nature</div>
+        <div class="help-item"><div class="help-dot" style="background:#E8A838"></div><span>Lait</span></div>
+        <div class="help-item"><div class="help-dot" style="background:#E8A838"></div><span>Céréales</span></div>
+        <div class="help-item"><div class="help-dot" style="background:#E8A838"></div><span>Couches & lingettes</span></div>
+        <div class="help-item"><div class="help-dot" style="background:#E8A838"></div><span>Jouets éducatifs</span></div>
+      </div>
+      <div class="help-card reveal-right" style="background:linear-gradient(135deg,#EDF7FF,#D6EEFF);border:1px solid rgba(59,130,246,0.12)">
+        <div class="help-icon">💰</div>
+        <div class="help-title">Soutien financier</div>
+        <div class="help-item"><div class="help-dot" style="background:#3B82F6"></div><span>Acheter les produits</span></div>
+        <div class="help-item"><div class="help-dot" style="background:#3B82F6"></div><span>Répondre aux urgences</span></div>
+        <div class="help-item"><div class="help-dot" style="background:#3B82F6"></div><span>Élargir le nombre de bénéficiaires</span></div>
+        <div class="help-item"><div class="help-dot" style="background:#3B82F6"></div><span>Assurer une distribution digne</span></div>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="galerie" class="section" style="background:#fff">
+    <div class="reveal">
+      <h2 class="section-title">Nos Éditions</h2>
+      <div class="section-line"></div>
+      <p class="section-desc">4 éditions · Des centaines de vies touchées · 5ème édition en mai 2026</p>
+    </div>
+    <div class="tabs-wrap reveal" style="transition-delay:0.15s">
+      <div class="tabs-nav"><button class="tab-btn active" onclick="switchTab(this, 'ed1')">1ère Édition<br><small>2022</small></button><button class="tab-btn " onclick="switchTab(this, 'ed2')">2ème Édition<br><small>2023</small></button><button class="tab-btn " onclick="switchTab(this, 'ed3')">3ème Édition<br><small>2024</small></button><button class="tab-btn " onclick="switchTab(this, 'ed4')">4ème Édition<br><small>2025</small></button></div>
+      <div class="tabs-content"><div class="tab-panel" id="panel-ed1" style="display:block">
+      <div class="edition-header">
+        <h3>1ère Édition — 2022</h3>
+        <p class="edition-sites">📍 Hôpital Grand Yoff · Hôpital Albert Royer · Pouponnière de Médina</p>
+      </div>
+      <div class="video-wrap">
+        <iframe src="https://www.youtube.com/embed/P1fmjDlmt6U?rel=0" title="Vidéo 1ère Édition" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="photo-grid">
+        <div class="grid-item" onclick="openLightbox('ed1', 0)">
+          <img src="photos/ed1/ed1_photo_1.jpeg" alt="Photo 1" loading="lazy">
+          <div class="grid-overlay"><span>🔍</span></div>
+        </div>
+        <div class="grid-item" onclick="openLightbox('ed1', 1)">
+          <img src="photos/ed1/ed1_photo_2.jpeg" alt="Photo 2" loading="lazy">
+          <div class="grid-overlay"><span>🔍</span></div>
+        </div>
+        <div class="grid-item" onclick="openLightbox('ed1', 2)">
+          <img src="photos/ed1/ed1_photo_3.jpeg" alt="Photo 3" loading="lazy">
+          <div class="grid-overlay"><span>🔍</span></div>
+        </div>
+        <div class="grid-item" onclick="openLightbox('ed1', 3)">
+          <img src="photos/ed1/ed1_photo_4.jpeg" alt="Photo 4" loading="lazy">
+          <div class="grid-overlay"><span>🔍</span></div>
+        </div>
+        <div class="grid-item" onclick="openLightbox('ed1', 4)">
+          <img src="photos/ed1/ed1_photo_5.jpeg" alt="Photo 5" loading="lazy">
+          <div class="grid-overlay"><span>🔍</span></div>
+        </div>
+        <div class="grid-item" onclick="openLightbox('ed1', 5)">
+          <img src="photos/ed1/ed3_photo_13.jpeg" alt="Photo 6" loading="lazy">
+          <div class="grid-overlay"><span>🔍</span></div>
+        </div>
+        <div class="grid-item" onclick="openLightbox('ed1', 6)">
+          <img src="photos/ed1/ed3_photo_19.jpeg" alt="Photo 7" loading="lazy">
+          <div class="grid-overlay"><span>🔍</span></div>
+        </div>
+        <div class="grid-item" onclick="openLightbox('ed1', 7)">
+          <img src="photos/ed1/ed3_photo_21.jpeg" alt="Photo 8" loading="lazy">
+          <div class="grid-overlay"><span>🔍</span></div>
+        </div></div>
+    </div><div class="tab-panel" id="panel-ed2" style="display:none">
+      <div class="edition-header">
+        <h3>2ème Édition — 2023</h3>
+        <p class="edition-sites">📍 Hôpital Idrissa Pouye · Village Pilote du Lac Rose · Dispensaire Mame Dior</p>
+      </div>
+      <div class="video-wrap">
+        <iframe src="https://www.youtube.com/embed/2yPqLWCEsc0?rel=0" title="Vidéo 2ème Édition" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="photo-grid">
+        <div class="grid-item" onclick="openLightbox('ed2', 0)">
+          <img src="photos/ed2/ed2_photo_1.jpeg" alt="Photo 1" loading="lazy">
+          <div class="grid-overlay"><span>🔍</span></div>
+        </div>
+        <div class="grid-item" onclick="openLightbox('ed2', 1)">
+          <img src="photos/ed2/ed2_photo_2.jpeg" alt="Photo 2" loading="lazy">
+          <div class="grid-overlay"><span>🔍</span></div>
+        </div>
+        <div class="grid-item" onclick="openLightbox('ed2', 2)">
+          <img src="photos/ed2/ed2_photo_3.jpeg" alt="Photo 3" loading="lazy">
+          <div class="grid-overlay"><span>🔍</span></div>
+        </div>
+        <div class="grid-item" onclick="openLightbox('ed2', 3)">
+          <img src="photos/ed2/ed2_photo_4.jpeg" alt="Photo 4" loading="lazy">
+          <div class="grid-overlay"><span>🔍</span></div>
+        </div>
+        <div class="grid-item" onclick="openLightbox('ed2', 4)">
+          <img src="photos/ed2/ed2_photo_5.jpeg" alt="Photo 5" loading="lazy">
+          <div class="grid-overlay"><span>🔍</span></div>
+        </div>
+        <div class="grid-item" onclick="openLightbox('ed2', 5)">
+          <img src="photos/ed2/ed3_photo_1.jpeg" alt="Photo 6" loading="lazy">
+          <div class="grid-overlay"><span>🔍</span></div>
+        </div>
+        <div class="grid-item" onclick="openLightbox('ed2', 6)">
+          <img src="photos/ed2/ed3_photo_2.jpeg" alt="Photo 7" loading="lazy">
+          <div class="grid-overlay"><span>🔍</span></div>
+        </div>
+        <div class="grid-item" onclick="openLightbox('ed2', 7)">
+          <img src="photos/ed2/ed3_photo_3.jpeg" alt="Photo 8" loading="lazy">
+          <div class="grid-overlay"><span>🔍</span></div>
+        </div>
+        <div class="grid-item" onclick="openLightbox('ed2', 8)">
+          <img src="photos/ed2/ed3_photo_4.jpeg" alt="Photo 9" loading="lazy">
+          <div class="grid-overlay"><span>🔍</span></div>
+        </div>
+        <div class="grid-item" onclick="openLightbox('ed2', 9)">
+          <img src="photos/ed2/ed3_photo_5.jpeg" alt="Photo 10" loading="lazy">
+          <div class="grid-overlay"><span>🔍</span></div>
+        </div>
+        <div class="grid-item" onclick="openLightbox('ed2', 10)">
+          <img src="photos/ed2/ed3_photo_6.jpeg" alt="Photo 11" loading="lazy">
+          <div class="grid-overlay"><span>🔍</span></div>
+        </div>
+        <div class="grid-item" onclick="openLightbox('ed2', 11)">
+          <img src="photos/ed2/ed3_photo_7.jpeg" alt="Photo 12" loading="lazy">
+          <div class="grid-overlay"><span>🔍</span></div>
+        </div>
+        <div class="grid-item" onclick="openLightbox('ed2', 12)">
+          <img src="photos/ed2/ed3_photo_8.jpeg" alt="Photo 13" loading="lazy">
+          <div class="grid-overlay"><span>🔍</span></div>
+        </div>
+        <div class="grid-item" onclick="openLightbox('ed2', 13)">
+          <img src="photos/ed2/ed3_photo_15.jpeg" alt="Photo 14" loading="lazy">
+          <div class="grid-overlay"><span>🔍</span></div>
+        </div>
+        <div class="grid-item" onclick="openLightbox('ed2', 14)">
+          <img src="photos/ed2/ed3_photo_16.jpeg" alt="Photo 15" loading="lazy">
+          <div class="grid-overlay"><span>🔍</span></div>
+        </div>
+        <div class="grid-item" onclick="openLightbox('ed2', 15)">
+          <img src="photos/ed2/ed3_photo_17.jpeg" alt="Photo 16" loading="lazy">
+          <div class="grid-overlay"><span>🔍</span></div>
+        </div>
+        <div class="grid-item" onclick="openLightbox('ed2', 16)">
+          <img src="photos/ed2/ed3_photo_18.jpeg" alt="Photo 17" loading="lazy">
+          <div class="grid-overlay"><span>🔍</span></div>
+        </div>
+        <div class="grid-item" onclick="openLightbox('ed2', 17)">
+          <img src="photos/ed2/ed3_photo_24.jpeg" alt="Photo 18" loading="lazy">
+          <div class="grid-overlay"><span>🔍</span></div>
+        </div></div>
+    </div><div class="tab-panel" id="panel-ed3" style="display:none">
+      <div class="edition-header">
+        <h3>3ème Édition — 2024</h3>
+        <p class="edition-sites">📍 Hôpital Albert Royer · Dispensaire Mame Dior · Hôpital Fann · Église St François · Enfants de Niakhar</p>
+      </div>
+      <div class="video-wrap">
+        <iframe src="https://www.youtube.com/embed/vPitJbFtHtw?rel=0" title="Vidéo 3ème Édition" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="photo-grid">
+        <div class="grid-item" onclick="openLightbox('ed3', 0)">
+          <img src="photos/ed3/ed3_photo_9.jpeg" alt="Photo 1" loading="lazy">
+          <div class="grid-overlay"><span>🔍</span></div>
+        </div>
+        <div class="grid-item" onclick="openLightbox('ed3', 1)">
+          <img src="photos/ed3/ed3_photo_10.jpeg" alt="Photo 2" loading="lazy">
+          <div class="grid-overlay"><span>🔍</span></div>
+        </div>
+        <div class="grid-item" onclick="openLightbox('ed3', 2)">
+          <img src="photos/ed3/ed3_photo_11.jpeg" alt="Photo 3" loading="lazy">
+          <div class="grid-overlay"><span>🔍</span></div>
+        </div>
+        <div class="grid-item" onclick="openLightbox('ed3', 3)">
+          <img src="photos/ed3/ed3_photo_12.jpeg" alt="Photo 4" loading="lazy">
+          <div class="grid-overlay"><span>🔍</span></div>
+        </div>
+        <div class="grid-item" onclick="openLightbox('ed3', 4)">
+          <img src="photos/ed3/ed3_photo_14.jpeg" alt="Photo 5" loading="lazy">
+          <div class="grid-overlay"><span>🔍</span></div>
+        </div>
+        <div class="grid-item" onclick="openLightbox('ed3', 5)">
+          <img src="photos/ed3/ed3_photo_20.jpeg" alt="Photo 6" loading="lazy">
+          <div class="grid-overlay"><span>🔍</span></div>
+        </div>
+        <div class="grid-item" onclick="openLightbox('ed3', 6)">
+          <img src="photos/ed3/ed3_photo_22.jpeg" alt="Photo 7" loading="lazy">
+          <div class="grid-overlay"><span>🔍</span></div>
+        </div>
+        <div class="grid-item" onclick="openLightbox('ed3', 7)">
+          <img src="photos/ed3/ed3_photo_23.jpeg" alt="Photo 8" loading="lazy">
+          <div class="grid-overlay"><span>🔍</span></div>
+        </div>
+        <div class="grid-item" onclick="openLightbox('ed3', 8)">
+          <img src="photos/ed3/ed3_photo_25.jpeg" alt="Photo 9" loading="lazy">
+          <div class="grid-overlay"><span>🔍</span></div>
+        </div></div>
+    </div><div class="tab-panel" id="panel-ed4" style="display:none">
+      <div class="edition-header">
+        <h3>4ème Édition — 2025</h3>
+        <p class="edition-sites">📍 Hôpital Albert Royer · Dispensaire Mame Dior · Enfants souffrant d'hydrocéphalie · Pouponnière</p>
+      </div>
+      <div class="video-wrap">
+        <iframe src="https://www.youtube.com/embed/6S0Yp9WAubs?rel=0" title="Vidéo 4ème Édition" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="photo-grid">
+        <div class="grid-item" onclick="openLightbox('ed4', 0)">
+          <img src="photos/ed4/ed4_photo_1.jpeg" alt="Photo 1" loading="lazy">
+          <div class="grid-overlay"><span>🔍</span></div>
+        </div>
+        <div class="grid-item" onclick="openLightbox('ed4', 1)">
+          <img src="photos/ed4/ed4_photo_2.jpeg" alt="Photo 2" loading="lazy">
+          <div class="grid-overlay"><span>🔍</span></div>
+        </div>
+        <div class="grid-item" onclick="openLightbox('ed4', 2)">
+          <img src="photos/ed4/ed4_photo_3.jpeg" alt="Photo 3" loading="lazy">
+          <div class="grid-overlay"><span>🔍</span></div>
+        </div>
+        <div class="grid-item" onclick="openLightbox('ed4', 3)">
+          <img src="photos/ed4/ed4_photo_4.jpeg" alt="Photo 4" loading="lazy">
+          <div class="grid-overlay"><span>🔍</span></div>
+        </div>
+        <div class="grid-item" onclick="openLightbox('ed4', 4)">
+          <img src="photos/ed4/ed4_photo_5.jpeg" alt="Photo 5" loading="lazy">
+          <div class="grid-overlay"><span>🔍</span></div>
+        </div>
+        <div class="grid-item" onclick="openLightbox('ed4', 5)">
+          <img src="photos/ed4/ed4_photo_6.jpeg" alt="Photo 6" loading="lazy">
+          <div class="grid-overlay"><span>🔍</span></div>
+        </div>
+        <div class="grid-item" onclick="openLightbox('ed4', 6)">
+          <img src="photos/ed4/ed4_photo_7.jpeg" alt="Photo 7" loading="lazy">
+          <div class="grid-overlay"><span>🔍</span></div>
+        </div></div>
+    </div></div>
+    </div>
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+      <div class="lb-inner" onclick="event.stopPropagation()">
+        <button class="lb-close" onclick="closeLightbox()">✕</button>
+        <button class="lb-prev" onclick="lbPrev()">&#8592;</button>
+        <img id="lb-img" src="" alt="">
+        <button class="lb-next" onclick="lbNext()">&#8594;</button>
+        <div class="lb-counter" id="lb-counter"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARTENAIRES -->
+  <section id="partenaires" class="section partner-section">
+    <div class="reveal">
+      <h2 class="section-title" style="color:#E8A838">Devenez Partenaires</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="partner-list reveal" style="transition-delay:0.15s" id="partnerList"></div>
+    <div class="reveal" style="text-align:center;margin-top:52px;transition-delay:0.3s">
+      <a href="mailto:mariannefriends221@gmail.com" class="btn btn-primary">Devenir partenaire</a>
+    </div>
+  </section>
+
+
+  <section id="don" class="section" style="background:linear-gradient(135deg,#1a1a2e 0%,#16213e 45%,#0f3460 100%)">
+    <div class="reveal" style="text-align:center">
+      <h2 class="section-title" style="color:#E8A838">Faire un Don</h2>
+      <div class="section-line"></div>
+      <p style="color:rgba(255,255,255,0.7);font-size:18px;max-width:580px;margin:0 auto 44px;line-height:1.8">
+        Chaque don, grand ou petit, transforme une vie. Soutenez notre mission en ligne ou via mobile money.
+      </p>
+    </div>
+    <div class="don-grid reveal" style="transition-delay:0.15s">
+      <div class="don-card don-online">
+        <div class="don-icon">💳</div>
+        <h3>Don en ligne</h3>
+        <p>Payez en toute sécurité via Kopar Express</p>
+        <a href="https://apps.koparexpress.com/apps/collectes/hq8fjsf32v" target="_blank" rel="noopener"
+           style="display:inline-block;margin-top:20px;padding:14px 36px;background:linear-gradient(135deg,#E8A838,#F5D27E);color:#1a1a2e;border-radius:50px;font-weight:700;text-decoration:none;font-size:15px;transition:all 0.3s;box-shadow:0 4px 15px rgba(232,168,56,0.3)">
+          Faire un don maintenant
+        </a>
+      </div>
+      <div class="don-card don-mobile">
+        <div class="don-icon">📱</div>
+        <h3>Mobile Money</h3>
+        <p>Envoyez votre don directement</p>
+        <div class="mm-cards">
+          <div class="mm-item">
+            <img src="photos/mobilemoney/orange_money.jpeg" alt="Orange Money" class="mm-logo">
+            <div class="mm-info">
+              <strong>Orange Money</strong>
+              <span>+221 77 235 33 52</span>
+            </div>
+          </div>
+          <div class="mm-item">
+            <img src="photos/mobilemoney/wave.jpeg" alt="Wave" class="mm-logo">
+            <div class="mm-info">
+              <strong>Wave</strong>
+              <span>+221 77 235 33 52</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRANSPARENCE -->
+  <section class="section" style="background:#FAFAF8">
+    <div class="reveal">
+      <h2 class="section-title">Notre Engagement et Transparence</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="trust-badges reveal" style="transition-delay:0.15s">
+      <div class="trust-badge"><span class="trust-check">✓</span> Utilisation responsable des dons</div>
+      <div class="trust-badge"><span class="trust-check">✓</span> Distributions documentées et valorisées</div>
+      <div class="trust-badge"><span class="trust-check">✓</span> Retours d'impact pour partenaires et donateurs</div>
+    </div>
+    <div class="reveal" style="transition-delay:0.3s">
+      <p class="quote">« Parce que la confiance est le cœur de la solidarité. »</p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       SECTION FRIENDS
+  ════════════════════════════════════════════ -->
+<section class="hero-friends" id="friends">
+    <div class="hero-content">
+      <div class="hero-logo-wrap"><img src="logo.jpg" alt="Logo Association Marianne & Friends"></div>
+      <h1>Faithful Friends</h1>
+      <p class="hero-sub">Piliers de notre engagement depuis 2022</p>
+      <div class="hero-badge">Confiance · Fidélité · Soutien indéfectible</div>
+    </div>
+  </section>
+
+  <section class="section" style="background:#fff">
+    <div class="reveal">
+      <h2 class="section-title">Nos Faithful Friends</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="presentation-wrapper reveal" style="transition-delay:0.15s; display:flex; gap:48px; align-items:flex-start; flex-wrap:wrap; max-width:1100px; margin:0 auto 40px;">
+      <div class="presentation-block" style="flex:1; min-width:280px; margin:0;">
+      <p>
+        Depuis la création de Marianne &amp; Friends, de nombreuses personnes ont choisi de marcher à nos côtés.<br><br>
+        Des membres de nos familles, des amis, des particuliers, des entrepreneurs, des entreprises et des organisations ont cru en notre vision et ont soutenu, chacun à leur manière, les actions solidaires de l'association.<br><br>
+        Ces Faithful Friends représentent bien plus que des partenaires : ils sont des piliers de notre engagement et de notre impact social depuis 2022.<br><br>
+        Certains apparaissent ici à travers leurs logos, mais derrière chaque projet réalisé se trouvent aussi de nombreuses personnes qui nous soutiennent dans l'ombre, par leur présence, leurs encouragements, leurs conseils ou leurs contributions.<br><br>
+        À tous ceux qui nous accompagnent depuis le début (visibles ou non sur cette page) nous adressons notre profonde gratitude, pour leur confiance, leur fidélité et leur soutien indéfectible.
+      </p>
+      <div class="presentation-highlight">❝ Le sourire toujours, grâce à vous. ❞</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section logos-section">
+    <div class="reveal">
+      <h2 class="section-title">Ils nous font confiance</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="logos-grid" id="logosGrid">
+      <div class="friend-logo-card reveal-scale">
+        <div class="friend-logo-wrap">
+          <img src="photos/friends/logo_petite_etoile.png" alt="Friend Logo" loading="lazy">
+        </div>
+      </div>
+      <div class="friend-logo-card reveal-scale">
+        <div class="friend-logo-wrap">
+          <img src="photos/friends/logo_taxawou_conciergerie.png" alt="Friend Logo" loading="lazy">
+        </div>
+      </div>
+      <div class="friend-logo-card reveal-scale">
+        <div class="friend-logo-wrap">
+          <img src="photos/friends/logo_africa_games.png" alt="Friend Logo" loading="lazy">
+        </div>
+      </div>
+      <div class="friend-logo-card reveal-scale">
+        <div class="friend-logo-wrap">
+          <img src="photos/friends/logo_saint_martin.jpeg" alt="E.P.L Saint Martin de Porres" loading="lazy">
+        </div>
+      </div>
+      <div class="friend-logo-card reveal-scale">
+        <div class="friend-logo-wrap">
+          <img src="photos/friends/logo_saint_martin_bilingue.jpeg" alt="Etablissement Bilingue Saint Martin de Porres" loading="lazy">
+        </div>
+      </div>
+      <div class="friend-logo-card reveal-scale">
+        <div class="friend-logo-wrap">
+          <img src="photos/friends/logo_prodaccess.jpeg" alt="Prod'Access" loading="lazy">
+        </div>
+      </div>
+      <div class="friend-logo-card reveal-scale">
+        <div class="friend-logo-wrap">
+          <img src="photos/friends/logo_sen_pop.jpeg" alt="SEN'pop" loading="lazy">
+        </div>
+      </div>
+      <div class="friend-logo-card reveal-scale">
+        <div class="friend-logo-wrap">
+          <img src="photos/friends/logo_wonder_event.jpeg" alt="Wonder'Event" loading="lazy">
+        </div>
+      </div>
+      <div class="friend-logo-card reveal-scale">
+        <div class="friend-logo-wrap">
+          <img src="photos/friends/logo_gerse_beauty.jpeg" alt="Gerse Beauty Crochets" loading="lazy">
+        </div>
+      </div>
+      <div class="friend-logo-card reveal-scale">
+        <div class="friend-logo-wrap">
+          <img src="photos/friends/logo_catholicom.jpeg" alt="CatholiCom" loading="lazy">
+        </div>
+      </div>
+      <div class="friend-logo-card reveal-scale">
+        <div class="friend-logo-wrap">
+          <img src="photos/friends/logo_le_lionceau.jpeg" alt="Le Lionceau" loading="lazy">
+        </div>
+      </div>
+      <div class="friend-logo-card reveal-scale">
+        <div class="friend-logo-wrap">
+          <img src="photos/friends/logo_saveurs_exotiques.jpeg" alt="Saveurs Exotiques" loading="lazy">
+        </div>
+      </div>
+      <div class="friend-logo-card reveal-scale">
+        <div class="friend-logo-wrap">
+          <img src="photos/friends/logo_kadiart.jpeg" alt="kadi'art" loading="lazy">
+        </div>
+      </div>
+      <div class="friend-logo-card reveal-scale">
+        <div class="friend-logo-wrap">
+          <img src="photos/friends/logo_barber_locks.jpeg" alt="Barber Locks" loading="lazy">
+        </div>
+      </div>
+      <div class="friend-logo-card reveal-scale">
+        <div class="friend-logo-wrap">
+          <img src="photos/friends/logo_kanen.jpeg" alt="Kañen" loading="lazy">
+        </div>
+      </div>
+      <div class="friend-logo-card reveal-scale">
+        <div class="friend-logo-wrap">
+          <img src="photos/friends/logo_super_digital_heroes.jpeg" alt="Super Digital Heroes" loading="lazy">
+        </div>
+      </div>
+      <div class="friend-logo-card reveal-scale">
+        <div class="friend-logo-wrap">
+          <img src="photos/friends/logo_delices_titina.jpeg" alt="Délices de Titina" loading="lazy">
+        </div>
+      </div>
+      <div class="friend-logo-card reveal-scale">
+        <div class="friend-logo-wrap">
+          <img src="photos/friends/logo_casamancaise.jpeg" alt="Casamançaise" loading="lazy">
+        </div>
+      </div>
+      <div class="friend-logo-card reveal-scale">
+        <div class="friend-logo-wrap">
+          <img src="photos/friends/logo_toumai_group.jpeg" alt="Toumai Group" loading="lazy">
+        </div>
+      </div>
+      <div class="friend-logo-card reveal-scale">
+        <div class="friend-logo-wrap">
+          <img src="photos/friends/logo_deff_sport.jpeg" alt="Deff Sport" loading="lazy">
+        </div>
+      </div>
+      <div class="friend-logo-card reveal-scale">
+        <div class="friend-logo-wrap">
+          <img src="photos/friends/logo_maryshop.jpeg" alt="Maryshop By Maité" loading="lazy">
+        </div>
+      </div>
+      <div class="friend-logo-card reveal-scale">
+        <div class="friend-logo-wrap">
+          <img src="photos/friends/logo_anne_k_glowax.jpeg" alt="Anne k Glowax" loading="lazy">
+        </div>
+      </div>
+      <div class="friend-logo-card reveal-scale">
+        <div class="friend-logo-wrap">
+          <img src="photos/friends/logo_iris_audiovisual.jpeg" alt="IRiS Audiovisual" loading="lazy">
+        </div>
+      </div>
+      <div class="friend-logo-card reveal-scale">
+        <div class="friend-logo-wrap">
+          <img src="photos/friends/logo_travel_with_ziggy.jpeg" alt="Travel with Ziggy" loading="lazy">
+        </div>
+      </div>
+      <div class="friend-logo-card reveal-scale">
+        <div class="friend-logo-wrap">
+          <img src="photos/friends/logo_casadi.jpeg" alt="CASADI" loading="lazy">
+        </div>
+      </div>
+      <div class="friend-logo-card reveal-scale">
+        <div class="friend-logo-wrap">
+          <img src="photos/friends/logo_sama_doula.jpeg" alt="Sama Doula" loading="lazy">
+        </div>
+      </div>
+      <div class="friend-logo-card reveal-scale">
+        <div class="friend-logo-wrap">
+          <img src="photos/friends/logo_alyfa.jpeg" alt="ALYFA" loading="lazy">
+        </div>
+      </div>
+      <div class="friend-logo-card reveal-scale">
+        <div class="friend-logo-wrap">
+          <img src="photos/friends/logo_nature_attitude.jpeg" alt="Nature Attitude" loading="lazy">
+        </div>
+      </div>
+      <div class="friend-logo-card reveal-scale">
+        <div class="friend-logo-wrap">
+          <img src="photos/friends/logo_les_delices_maria.jpeg" alt="Les Délices de Maria" loading="lazy">
+        </div>
+      </div>
+      <div class="friend-logo-card reveal-scale">
+        <div class="friend-logo-wrap">
+          <img src="photos/friends/logo_xpress_sales.jpeg" alt="XpressSales" loading="lazy">
+        </div>
+      </div>
+      <div class="friend-logo-card reveal-scale">
+        <div class="friend-logo-wrap">
+          <img src="photos/friends/logo_vision_pub.jpeg" alt="Vision Pub" loading="lazy">
+        </div>
+      </div>
+      <div class="friend-logo-card reveal-scale">
+        <div class="friend-logo-wrap">
+          <img src="photos/friends/logo_sen_couches.jpeg" alt="Sen Couches" loading="lazy">
+        </div>
+      </div>
+      <div class="friend-logo-card reveal-scale">
+        <div class="friend-logo-wrap">
+          <img src="photos/friends/logo_retcom.jpeg" alt="RETCOM" loading="lazy">
+        </div>
+      </div>
+      <div class="friend-logo-card reveal-scale">
+        <div class="friend-logo-wrap">
+          <img src="photos/friends/logo_fran6concept.jpeg" alt="FRAN6CONCEPT" loading="lazy">
+        </div>
+      </div>
+      <div class="friend-logo-card reveal-scale">
+        <div class="friend-logo-wrap">
+          <img src="photos/friends/logo_africa_ren.jpeg" alt="Africa Ren" loading="lazy">
+        </div>
+      </div>
+      <div class="friend-logo-card reveal-scale">
+        <div class="friend-logo-wrap">
+          <img src="photos/friends/logo221_king_gilbert.jpeg" alt="King Gilbert" loading="lazy">
+        </div>
+      </div>
+      <div class="friend-logo-card reveal-scale">
+        <div class="friend-logo-wrap">
+          <img src="photos/friends/friends_x.jpeg" alt="Friend Logo" loading="lazy">
+        </div>
+      </div>
+      <div class="friend-logo-card reveal-scale">
+        <div class="friend-logo-wrap">
+          <img src="photos/friends/friends_y.jpeg" alt="Friend Logo" loading="lazy">
+        </div>
+      </div>
+      <div class="friend-logo-card reveal-scale">
+        <div class="friend-logo-wrap">
+          <img src="photos/friends/friends_z.jpeg" alt="Friend Logo" loading="lazy">
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:48px;" class="reveal">
+      <a href="friends.html" class="btn btn-outline" style="display:inline-block;padding:14px 36px;border:2px solid #E8A838;color:#E8A838;border-radius:50px;font-weight:600;text-decoration:none;font-size:15px;transition:all 0.3s;" onmouseover="this.style.background='#E8A838';this.style.color='#1a1a2e'" onmouseout="this.style.background='transparent';this.style.color='#E8A838'">Voir tous nos Faithful Friends →</a>
+    </div>
+  </section>
+  <!-- Friends Lightbox -->
+<div class="lightbox-friends" id="lightbox-friends" onclick="closeLightboxFriends()">
+    <div class="lb-inner" onclick="event.stopPropagation()">
+      <button class="lb-close" onclick="closeLightboxFriends()">✕</button>
+      <button class="lb-prev" onclick="lbPrevFriends()">&#8592;</button>
+      <img id="lb-img-friends" src="" alt="">
+      <button class="lb-next" onclick="lbNextFriends()">&#8594;</button>
+      <div class="lb-counter" id="lb-counter-friends"></div>
+    </div>
+  </div>
+
+<!-- ═══ POPUP FAIRE UN DON ═══ -->
+<div class="don-popup-overlay" id="donPopupOverlay" onclick="if(event.target===this)closeDonPopup()">
+  <div class="don-popup-box">
+    <button class="don-popup-close" onclick="closeDonPopup()">✕</button>
+    <div class="don-popup-badge">5 ans d'engagement · 2026</div>
+    <h2 class="don-popup-title">Seuls, nous aidons quelques-uns.<br>Ensemble, nous transformons des vies.</h2>
+    <div class="don-popup-quote">
+      Parce que la solidarité ne doit pas être ponctuelle. Parce que les enfants hospitalisés ont besoin d'un soutien constant. Notre objectif 2026 : <strong>2 000 000 FCFA</strong>.
+    </div>
+    <ul class="don-popup-reasons">
+      <li>Parce que 2026 est une année charnière — nos 5 ans d'engagement</li>
+      <li>Parce que les besoins ne s'arrêtent pas après le Carême ou le Ramadan</li>
+      <li>Parce que les familles vulnérables font face à des urgences toute l'année</li>
+      <li>Parce qu'une association ne grandit pas seule — grâce à ceux qui contribuent</li>
+    </ul>
+    <div class="don-popup-actions">
+      <div style="flex:1;min-width:160px;text-align:center">
+        <a href="https://apps.koparexpress.com/apps/collectes/hq8fjsf32v" target="_blank" rel="noopener"
+           style="display:inline-block;padding:14px 30px;background:linear-gradient(135deg,#E8A838,#F5D27E);color:#1a1a2e;border-radius:50px;font-weight:700;text-decoration:none;font-size:14px;box-shadow:0 4px 15px rgba(232,168,56,0.3)">
+          💳 Don en ligne (Kopar Express)
+        </a>
+      </div>
+      <div class="don-popup-mm">
+        <strong>Mobile Money</strong>
+        <div class="don-popup-mm-item">
+          <img src="photos/mobilemoney/orange_money.jpeg" alt="Orange Money">
+          <span>Orange Money · 77 235 33 52</span>
+        </div>
+        <div class="don-popup-mm-item">
+          <img src="photos/mobilemoney/wave.jpeg" alt="Wave">
+          <span>Wave · 77 235 33 52</span>
+        </div>
+      </div>
+    </div>
+    <div class="don-popup-skip">
+      <button onclick="closeDonPopup()">Pas maintenant</button>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+  <footer class="footer">
+    <div class="reveal">
+      <div class="footer-logo"><img src="logo.jpg" alt="Logo Association Marianne & Friends"></div>
+      <h3>Association Marianne & Friends</h3>
+      <p class="footer-sub">Association Caritative – Sénégal</p>
+      <p class="footer-founder">Responsable Fondatrice : <strong>Marianne Manga Curtis</strong></p>
+      <div class="footer-contacts">
+        <a href="tel:+221772353352">📞 +221 77 235 33 52</a>
+        <a href="tel:+221769603998">📞 +221 76 960 39 98</a>
+        <a href="https://wa.me/221769603998" target="_blank" rel="noopener">💬 WhatsApp : +221 76 960 39 98</a>
+        <a href="mailto:mariannefriends221@gmail.com" class="email">✉️ mariannefriends221@gmail.com</a>
+      </div>
+      <div class="footer-social">
+        <!-- TikTok -->
+        <a href="https://www.tiktok.com/@association.maria?_r=1&_t=ZP-94Qpuc63Myt" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.84a8.16 8.16 0 004.77 1.53V6.9a4.85 4.85 0 01-1-.21z"/></svg>
+          TikTok
+        </a>
+        <!-- Snapchat -->
+        <a href="https://www.snapchat.com/add/mariannefriends?share_id=muB39y4IQPah3VWW_w3rbA&locale=en_SN" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.01 2C8.13 2 5.28 4.8 5.28 8.68c0 .74.06 1.28.06 1.28S4.1 10.27 3 10.6c.18.68.88 1.18 1.8 1.18h.14c-.22.54-.38 1.11-.38 1.7 0 1.61.98 3.01 2.62 3.89-.22.54-.66.9-1.2 1.1-.5.18-.84.65-.84 1.17 0 .08.01.17.03.25.02.08.18.11.4.11.97 0 2.31-.33 3.52-.9.61.09 1.22.14 1.84.14.62 0 1.23-.05 1.84-.14 1.21.57 2.55.9 3.52.9.22 0 .38-.03.4-.11.02-.08.03-.17.03-.25 0-.52-.34-.99-.84-1.17-.54-.2-.98-.56-1.2-1.1 1.64-.88 2.62-2.28 2.62-3.89 0-.59-.16-1.16-.38-1.7h.14c.92 0 1.62-.5 1.8-1.18-1.1-.33-2.34-.64-2.34-.64s.06-.54.06-1.28C18.74 4.8 15.89 2 12.01 2z"/></svg>
+          Snapchat
+        </a>
+        <!-- Instagram -->
+        <a href="https://www.instagram.com/mariannefriends?igsh=MTRzcDJ0Z2NpbjFsdA%3D%3D&utm_source=qr" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          Instagram
+        </a>
+        <!-- Facebook -->
+        <a href="https://www.facebook.com/share/1B3rLXS91r/?mibextid=wwXIfr" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          Facebook
+        </a>
+        <!-- LinkedIn -->
+        <a href="https://www.linkedin.com/company/association-marianne-and-friends" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          LinkedIn
+        </a>
+        <!-- YouTube -->
+        <a href="https://www.youtube.com/@MarianneandFriends" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          YouTube
+        </a>
+        <!-- WhatsApp Channel -->
+        <a href="https://whatsapp.com/channel/0029Vb7JFtTCsU9Sue6atm3g" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp Channel
+        </a>
+      </div>
+      <div class="footer-bottom">© 2025 Association Marianne & Friends. Le sourire toujours.</div>
+    </div>
+  </footer>
+
+<script>
+// ─── DATA ───
+const missions = [
+  { letter: "A", label: "Assistance alimentaire", icon: "🍞", color: "#E8A838" },
+  { letter: "H", label: "Hygiène & Santé", icon: "❤️", color: "#EF4444" },
+  { letter: "P", label: "Soutien pédiatrique", icon: "👶", color: "#3B82F6" },
+  { letter: "C", label: "Appui communautaire", icon: "🤝", color: "#10B981" },
+  { letter: "F", label: "Familles en urgence", icon: "👨‍👩‍👧", color: "#8B5CF6" },
+];
+
+const timeline = {
+  2022: { label: "Les premières actions du cœur", sites: ["Hôpital Général de Grand Yoff", "Hôpital Albert Royer", "Pouponnière de Médina"] },
+  2023: { label: "L'élargissement de la solidarité", sites: ["Hôpital Idrissa Pouye", "Hôpital Albert Royer", "Dispensaire Mame Dior", "Village Pilote"] },
+  2024: { label: "Renforcement du soutien pédiatrique", sites: ["Hôpital Albert Royer – Pédiatrie", "Hôpital Fann – Pédiatrie Neurochirurgie", "Dispensaire Mame Dior", "Pouponnière de Médina", "Église Saint François d'Assise", "Enfants de Niakhar (Fatick)"] },
+  2025: { label: "Accompagnement des situations sensibles", sites: ["Hôpital Albert Royer", "Hôpital Fann", "Dispensaire Mame Dior", "Pouponnière de Médina", "Familles démunies hors cadre institutionnel", "Nourrissons nés avec hydrocéphalie"] },
+};
+
+const events = [
+  { title: "Collecte Solidaire Nationale", date: "18 février – 3 avril 2026", details: "Objectif : 2 000 000 FCFA · Intensifier le soutien pédiatrique · Accompagner davantage de familles", color: "#E8A838", icon: "🤲" },
+  { title: "Foire Solidaire", date: "18 avril 2026 · 10h – 19h", location: "📍 Etab. Bilingue St-Martin de Porès, Keur Massar", details: "Exposants tissus · Vêtements · Artisanat · Créations couture · Produits divers", color: "#10B981", icon: "🏪" },
+  { title: "Salon d'Orientation Solidaire", date: "18 avril 2026", location: "📍 Etab. Bilingue St-Martin de Porès, Keur Massar", details: "Élèves & étudiants · Formations générales & techniques · Orientations internationales (Canada, France, États-Unis…)", color: "#0ea5e9", icon: "🎓" },
+  { title: "Soirée de Gala – 5ème Édition", date: "9 mai 2026 · 17h – à l'aube", details: "800 invités · Dîner de Gala · Défilé de mode · Exposition d'œuvres · Vente aux enchères · Artistes invités", color: "#8B5CF6", icon: "✨" },
+];
+
+const partnerBenefits = [
+  { icon: "👁️", text: "Visibilité sur 800 invités qualifiés" },
+  { icon: "📱", text: "Exposition digitale avant, pendant et après l'événement" },
+  { icon: "🏆", text: "Positionnement RSE fort" },
+  { icon: "🤝", text: "Association à une cause humaine crédible" },
+];
+
+// ─── PARTICLES ───
+const hero = document.getElementById('hero');
+for (let i = 0; i < 14; i++) {
+  const p = document.createElement('div');
+  p.className = 'particle';
+  const size = 6 + Math.random() * 22;
+  p.style.cssText = `width:${size}px;height:${size}px;left:${Math.random()*100}%;top:${Math.random()*100}%;animation:float ${6+Math.random()*9}s ease-in-out infinite;animation-delay:${Math.random()*5}s;`;
+  hero.appendChild(p);
+}
+// Partner section particles
+const partnerSec = document.getElementById('partenaires');
+for (let i = 0; i < 8; i++) {
+  const p = document.createElement('div');
+  p.className = 'particle';
+  const size = 6 + Math.random() * 18;
+  p.style.cssText = `width:${size}px;height:${size}px;left:${Math.random()*100}%;top:${Math.random()*100}%;animation:float ${7+Math.random()*8}s ease-in-out infinite;animation-delay:${Math.random()*4}s;`;
+  partnerSec.appendChild(p);
+}
+
+// ─── RENDER MISSIONS ───
+const missionGrid = document.getElementById('missionGrid');
+missions.forEach((m, i) => {
+  const card = document.createElement('div');
+  card.className = 'mission-card reveal-scale';
+  card.style.transitionDelay = `${i * 0.1}s`;
+  card.innerHTML = `
+    <div class="mission-icon" style="background:${m.color}12"><span>${m.icon}</span></div>
+    <div class="mission-letter" style="background:linear-gradient(135deg,${m.color},${m.color}cc)">${m.letter}</div>
+    <div class="mission-label">${m.label}</div>
+  `;
+  missionGrid.appendChild(card);
+});
+
+// ─── RENDER YEAR BUTTONS ───
+const yearButtons = document.getElementById('yearButtons');
+let activeYear = null;
+Object.keys(timeline).forEach(year => {
+  const btn = document.createElement('button');
+  btn.className = 'year-btn';
+  btn.textContent = year;
+  btn.addEventListener('click', () => {
+    if (activeYear === year) { activeYear = null; } else { activeYear = year; }
+    renderActions();
+    document.querySelectorAll('.year-btn').forEach(b => b.classList.remove('active'));
+    if (activeYear) btn.classList.add('active');
+  });
+  yearButtons.appendChild(btn);
+});
+
+function renderActions() {
+  const list = document.getElementById('actionsList');
+  if (!activeYear) {
+    list.innerHTML = '<div class="actions-placeholder">👆 Cliquez sur une année pour découvrir nos actions</div>';
+    return;
+  }
+  const data = timeline[activeYear];
+  list.innerHTML = '';
+  // Year label
+  const lbl = document.createElement('div');
+  lbl.style.cssText = 'text-align:center;font-style:italic;color:#E8A838;font-size:15px;margin-bottom:18px;font-weight:500;';
+  lbl.textContent = data.label;
+  list.appendChild(lbl);
+  data.sites.forEach((action, i) => {
+    const card = document.createElement('div');
+    card.className = 'action-card';
+    card.style.animationDelay = `${i * 0.1}s`;
+    card.innerHTML = `<div class="action-num">${i + 1}</div><div class="action-text">${action}</div>`;
+    list.appendChild(card);
+  });
+}
+
+// ─── RENDER EVENTS ───
+const eventsGrid = document.getElementById('eventsGrid');
+events.forEach((ev, i) => {
+  const dir = i % 2 === 0 ? 'reveal-left' : 'reveal-right';
+  const card = document.createElement('div');
+  card.className = `event-card ${dir}`;
+  card.style.transitionDelay = `${i * 0.12}s`;
+  card.style.borderLeft = `4px solid ${ev.color}`;
+  card.innerHTML = `
+    <div style="position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,${ev.color},transparent)"></div>
+    <div class="event-inner">
+      <div class="event-icon" style="background:${ev.color}15">${ev.icon}</div>
+      <div class="event-body">
+        <div class="event-title">${ev.title}</div>
+        <div class="event-date" style="background:${ev.color}15;color:${ev.color}">📅 ${ev.date}</div>
+        ${ev.location ? `<div class="event-location">${ev.location}</div>` : ''}
+        ${ev.details ? `<div class="event-details">${ev.details}</div>` : ''}
+      </div>
+    </div>
+  `;
+  eventsGrid.appendChild(card);
+});
+
+// ─── RENDER PARTNER BENEFITS ───
+const partnerList = document.getElementById('partnerList');
+partnerBenefits.forEach(b => {
+  const el = document.createElement('div');
+  el.className = 'partner-benefit';
+  el.innerHTML = `<span class="pb-icon">${b.icon}</span><span class="pb-text">${b.text}</span>`;
+  partnerList.appendChild(el);
+});
+
+// ─── SCROLL REVEAL ───
+function revealElements() {
+  const reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
+  reveals.forEach(el => {
+    const top = el.getBoundingClientRect().top;
+    if (top < window.innerHeight * 0.88) {
+      el.classList.add('visible');
+    }
+  });
+}
+
+// ─── COUNTER ANIMATION ───
+let countersDone = false;
+function animateCounters() {
+  if (countersDone) return;
+  const counters = document.querySelectorAll('.stat-number[data-count]');
+  counters.forEach(counter => {
+    const rect = counter.getBoundingClientRect();
+    if (rect.top < window.innerHeight * 0.85) {
+      countersDone = true;
+      const end = parseInt(counter.dataset.count);
+      const duration = 2000;
+      const step = end / (duration / 16);
+      let current = 0;
+      const timer = setInterval(() => {
+        current += step;
+        if (current >= end) { counter.textContent = end + '+'; clearInterval(timer); }
+        else counter.textContent = Math.floor(current) + '+';
+      }, 16);
+    }
+  });
+}
+
+// ─── NAVBAR SCROLL ───
+function handleNavScroll() {
+  const nav = document.getElementById('navbar');
+  if (window.scrollY > 60) nav.classList.add('scrolled');
+  else nav.classList.remove('scrolled');
+}
+
+// ─── MOBILE MENU ───
+const hamburgerBtn = document.getElementById('hamburgerBtn');
+const mobileMenu = document.getElementById('mobileMenu');
+hamburgerBtn.addEventListener('click', () => {
+  hamburgerBtn.classList.toggle('open');
+  mobileMenu.classList.toggle('open');
+});
+function closeMobile() {
+  hamburgerBtn.classList.remove('open');
+  mobileMenu.classList.remove('open');
+}
+
+
+window.lb_ed1 = ["photos/ed1/ed1_photo_1.jpeg", "photos/ed1/ed1_photo_2.jpeg", "photos/ed1/ed1_photo_3.jpeg", "photos/ed1/ed1_photo_4.jpeg", "photos/ed1/ed1_photo_5.jpeg", "photos/ed1/ed3_photo_13.jpeg", "photos/ed1/ed3_photo_19.jpeg", "photos/ed1/ed3_photo_21.jpeg"];
+window.lb_ed2 = ["photos/ed2/ed2_photo_1.jpeg", "photos/ed2/ed2_photo_2.jpeg", "photos/ed2/ed2_photo_3.jpeg", "photos/ed2/ed2_photo_4.jpeg", "photos/ed2/ed2_photo_5.jpeg", "photos/ed2/ed3_photo_1.jpeg", "photos/ed2/ed3_photo_2.jpeg", "photos/ed2/ed3_photo_3.jpeg", "photos/ed2/ed3_photo_4.jpeg", "photos/ed2/ed3_photo_5.jpeg", "photos/ed2/ed3_photo_6.jpeg", "photos/ed2/ed3_photo_7.jpeg", "photos/ed2/ed3_photo_8.jpeg", "photos/ed2/ed3_photo_15.jpeg", "photos/ed2/ed3_photo_16.jpeg", "photos/ed2/ed3_photo_17.jpeg", "photos/ed2/ed3_photo_18.jpeg", "photos/ed2/ed3_photo_24.jpeg"];
+window.lb_ed3 = ["photos/ed3/ed3_photo_9.jpeg", "photos/ed3/ed3_photo_10.jpeg", "photos/ed3/ed3_photo_11.jpeg", "photos/ed3/ed3_photo_12.jpeg", "photos/ed3/ed3_photo_14.jpeg", "photos/ed3/ed3_photo_20.jpeg", "photos/ed3/ed3_photo_22.jpeg", "photos/ed3/ed3_photo_23.jpeg", "photos/ed3/ed3_photo_25.jpeg"];
+window.lb_ed4 = ["photos/ed4/ed4_photo_1.jpeg", "photos/ed4/ed4_photo_2.jpeg", "photos/ed4/ed4_photo_3.jpeg", "photos/ed4/ed4_photo_4.jpeg", "photos/ed4/ed4_photo_5.jpeg", "photos/ed4/ed4_photo_6.jpeg", "photos/ed4/ed4_photo_7.jpeg"];
+function switchTab(button, id) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.style.display = 'none');
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('panel-' + id).style.display = 'block';
+  button.classList.add('active');
+}
+let lbCurrent = 0, lbData = [];
+function openLightbox(edId, idx) {
+  lbData = window['lb_' + edId];
+  lbCurrent = idx;
+  document.getElementById('lb-img').src = lbData[idx];
+  document.getElementById('lb-counter').textContent = (idx+1) + ' / ' + lbData.length;
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function lbPrev() { lbCurrent = (lbCurrent-1+lbData.length)%lbData.length; document.getElementById('lb-img').src = lbData[lbCurrent]; document.getElementById('lb-counter').textContent = (lbCurrent+1)+' / '+lbData.length; }
+function lbNext() { lbCurrent = (lbCurrent+1)%lbData.length; document.getElementById('lb-img').src = lbData[lbCurrent]; document.getElementById('lb-counter').textContent = (lbCurrent+1)+' / '+lbData.length; }
+document.addEventListener('keydown', e => {
+  const lb = document.getElementById('lightbox');
+  if (!lb.classList.contains('open')) return;
+  if (e.key==='Escape') closeLightbox();
+  if (e.key==='ArrowLeft') lbPrev();
+  if (e.key==='ArrowRight') lbNext();
+});
+
+// ─── EVENT LISTENERS ───
+window.addEventListener('scroll', () => { revealElements(); animateCounters(); handleNavScroll(); }, { passive: true });
+window.addEventListener('DOMContentLoaded', () => { animateCounters(); });
+
+
+// ─── FRIENDS JS ───
+
+const allLogos = ["photos/friends/logo_petite_etoile.png", "photos/friends/logo_taxawou_conciergerie.png", "photos/friends/logo_africa_games.png", "photos/friends/logo_saint_martin.jpeg", "photos/friends/logo_saint_martin_bilingue.jpeg", "photos/friends/logo_prodaccess.jpeg", "photos/friends/logo_sen_pop.jpeg", "photos/friends/logo_wonder_event.jpeg", "photos/friends/logo_gerse_beauty.jpeg", "photos/friends/logo_catholicom.jpeg", "photos/friends/logo_le_lionceau.jpeg", "photos/friends/logo_saveurs_exotiques.jpeg", "photos/friends/logo_kadiart.jpeg", "photos/friends/logo_barber_locks.jpeg", "photos/friends/logo_kanen.jpeg", "photos/friends/logo_super_digital_heroes.jpeg", "photos/friends/logo_delices_titina.jpeg", "photos/friends/logo_casamancaise.jpeg", "photos/friends/logo_toumai_group.jpeg", "photos/friends/logo_deff_sport.jpeg", "photos/friends/logo_maryshop.jpeg", "photos/friends/logo_anne_k_glowax.jpeg", "photos/friends/logo_iris_audiovisual.jpeg", "photos/friends/logo_travel_with_ziggy.jpeg", "photos/friends/logo_casadi.jpeg", "photos/friends/logo_sama_doula.jpeg", "photos/friends/logo_alyfa.jpeg", "photos/friends/logo_nature_attitude.jpeg", "photos/friends/logo_les_delices_maria.jpeg", "photos/friends/logo_xpress_sales.jpeg", "photos/friends/logo_vision_pub.jpeg", "photos/friends/logo_sen_couches.jpeg", "photos/friends/logo_retcom.jpeg", "photos/friends/logo_fran6concept.jpeg", "photos/friends/logo_africa_ren.jpeg", "photos/friends/logo221_king_gilbert.jpeg", "photos/friends/friends_x.jpeg", "photos/friends/friends_y.jpeg", "photos/friends/friends_z.jpeg"];
+
+// (navbar scroll shared)
+document.getElementById('hamburgerBtn').addEventListener('click', function() {
+  this.classList.toggle('open');
+  document.getElementById('mobileMenu').classList.toggle('open');
+});
+function closeMobile() {
+  document.getElementById('hamburgerBtn').classList.remove('open');
+  document.getElementById('mobileMenu').classList.remove('open');
+}
+
+// (particles index only) to logo cards
+document.querySelectorAll('.friend-logo-card').forEach((card, idx) => {
+  card.onclick = () => openLightboxFriends(idx);
+});
+
+// (scroll reveal shared)
+
+// Lightbox
+let lbCurrentFriends = 0;
+function openLightboxFriends(idx) {
+  lbCurrentFriends = idx;
+  document.getElementById('lb-img-friends').src = allLogos[lbCurrentFriends];
+  document.getElementById('lb-counter-friends').textContent = (lbCurrentFriends+1) + ' / ' + allLogos.length;
+  document.getElementById('lightbox-friends').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightboxFriends() {
+  document.getElementById('lightbox-friends').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function lbPrevFriends() {
+  lbCurrentFriends = (lbCurrentFriends-1+allLogos.length)%allLogos.length;
+  document.getElementById('lb-img-friends').src = allLogos[lbCurrentFriends];
+  document.getElementById('lb-counter-friends').textContent = (lbCurrentFriends+1)+' / '+allLogos.length;
+}
+function lbNextFriends() {
+  lbCurrentFriends = (lbCurrentFriends+1)%allLogos.length;
+  document.getElementById('lb-img-friends').src = allLogos[lbCurrentFriends];
+  document.getElementById('lb-counter-friends').textContent = (lbCurrentFriends+1)+' / '+allLogos.length;
+}
+document.addEventListener('keydown', e => {
+  if (!document.getElementById('lightbox-friends').classList.contains('open')) return;
+  if (e.key==='Escape') closeLightboxFriends();
+  if (e.key==='ArrowLeft') lbPrevFriends();
+  if (e.key==='ArrowRight') lbNextFriends();
+});
+
+// ─── POPUP DON ───
+let donPopupShown = false;
+function openDonPopup() {
+  document.getElementById('donPopupOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeDonPopup() {
+  document.getElementById('donPopupOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+  donPopupShown = true;
+}
+
+// Scroll trigger: show popup at 50% scroll of #presentation section
+function checkDonPopupTrigger() {
+  if (donPopupShown) return;
+  const pres = document.getElementById('presentation');
+  if (!pres) return;
+  const rect = pres.getBoundingClientRect();
+  const presHeight = pres.offsetHeight;
+  // Amount scrolled past the start of the section
+  const scrolledIntoSection = -rect.top;
+  const halfwayPoint = presHeight * 0.5;
+  if (scrolledIntoSection >= halfwayPoint) {
+    donPopupShown = true; // prevent re-trigger
+    setTimeout(openDonPopup, 500); // slight delay for UX
+  }
+}
+window.addEventListener('scroll', checkDonPopupTrigger, { passive: true });
+// Also close popup with Escape key
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && document.getElementById('donPopupOverlay').classList.contains('open')) {
+    closeDonPopup();
+  }
+});
+
+</script>
+</body>
+</html>
